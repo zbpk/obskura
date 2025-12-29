@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Light Blue Compression Shirt — OBSKURA</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -10,24 +10,30 @@
 <header>
   <div class="logo">OBSKURA</div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="../index.html">Home</a>
+    <a href="../shop.html">Shop</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="product-page">
 
-  <img src="images/Light Blue Shirt Front.png" alt="Light Blue Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+  <div class="image-switcher">
+    <img id="productImage" src="../images/Light Blue Shirt Front.png" alt="Light Blue Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+    
+    <div class="image-buttons" style="margin-top:15px;">
+      <button onclick="showFront()" style="padding:8px 14px; margin-right:10px;">Front</button>
+      <button onclick="showBack()" style="padding:8px 14px;">Back</button>
+    </div>
+  </div>
 
   <div class="product-info">
     <h1>Light Blue Compression Shirt</h1>
 
     <p class="description">
-      A cool, frost‑tone layer designed for clarity and control.  
-      Contour lines glide across the torso like chilled circuitry, shaping a silhouette that feels calm, precise, and quietly untouchable.  
-      Built for those who move with a clear mind and an unshaken presence.
+      A cool, sky‑coded layer built for clarity and motion.  
+      Contour lines flow across the torso like airy circuitry, forming a silhouette that feels light, agile, and quietly energized.
     </p>
 
     <h3>Choose Size</h3>
@@ -50,6 +56,16 @@
   </div>
 
 </section>
+
+<script>
+  function showFront() {
+    document.getElementById("productImage").src = "../images/Light Blue Shirt Front.png";
+  }
+
+  function showBack() {
+    document.getElementById("productImage").src = "../images/Light Blue Shirt Back.png";
+  }
+</script>
 
 </body>
 </html>
