@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Beige Compression Shirt — OBSKURA</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -10,24 +10,30 @@
 <header>
   <div class="logo">OBSKURA</div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="../index.html">Home</a>
+    <a href="../shop.html">Shop</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="product-page">
 
-  <img src="images/Beige Shirt Front.png" alt="Beige Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+  <div class="image-switcher">
+    <img id="productImage" src="../images/Beige Shirt Front.png" alt="Beige Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+    
+    <div class="image-buttons" style="margin-top:15px;">
+      <button onclick="showFront()" style="padding:8px 14px; margin-right:10px;">Front</button>
+      <button onclick="showBack()" style="padding:8px 14px;">Back</button>
+    </div>
+  </div>
 
   <div class="product-info">
     <h1>Beige Compression Shirt</h1>
 
     <p class="description">
-      A muted, sand‑tone compression layer engineered for those who move with quiet certainty.  
-      Anatomical contour lines trace the chest and obliques, creating a silhouette that feels tactical, grounded, and unmistakably intentional.  
-      Built for identity, performance, and the moments where presence speaks louder than words.
+      A warm, neutral layer engineered for quiet confidence.  
+      Contour lines glide across the torso like soft circuitry, shaping a silhouette that feels grounded, calm, and effortlessly composed.
     </p>
 
     <h3>Choose Size</h3>
@@ -50,6 +56,16 @@
   </div>
 
 </section>
+
+<script>
+  function showFront() {
+    document.getElementById("productImage").src = "../images/Beige Shirt Front.png";
+  }
+
+  function showBack() {
+    document.getElementById("productImage").src = "../images/Beige Shirt Back.png";
+  }
+</script>
 
 </body>
 </html>
