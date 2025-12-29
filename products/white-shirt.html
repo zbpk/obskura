@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>White Compression Shirt — OBSKURA</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -10,24 +10,30 @@
 <header>
   <div class="logo">OBSKURA</div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="../index.html">Home</a>
+    <a href="../shop.html">Shop</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="product-page">
 
-  <img src="images/White Shirt Front.png" alt="White Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+  <div class="image-switcher">
+    <img id="productImage" src="../images/White Shirt Front.png" alt="White Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+    
+    <div class="image-buttons" style="margin-top:15px;">
+      <button onclick="showFront()" style="padding:8px 14px; margin-right:10px;">Front</button>
+      <button onclick="showBack()" style="padding:8px 14px;">Back</button>
+    </div>
+  </div>
 
   <div class="product-info">
     <h1>White Compression Shirt</h1>
 
     <p class="description">
-      A clean, frost‑white layer engineered for precision and clarity.  
-      Contour lines glide across the torso like sterile circuitry, shaping a silhouette that feels sharp, minimal, and quietly untouchable.  
-      Designed for those who move with calm discipline — a second skin that reflects control in its purest form.
+      A clean, signal‑white layer built for precision and clarity.  
+      Contour lines trace the torso like luminous circuitry, forming a silhouette that feels sharp, elevated, and quietly commanding.
     </p>
 
     <h3>Choose Size</h3>
@@ -50,6 +56,16 @@
   </div>
 
 </section>
+
+<script>
+  function showFront() {
+    document.getElementById("productImage").src = "../images/White Shirt Front.png";
+  }
+
+  function showBack() {
+    document.getElementById("productImage").src = "../images/White Shirt Back.png";
+  }
+</script>
 
 </body>
 </html>
