@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Purple Compression Shirt — OBSKURA</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -10,24 +10,30 @@
 <header>
   <div class="logo">OBSKURA</div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="../index.html">Home</a>
+    <a href="../shop.html">Shop</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="product-page">
 
-  <img src="images/Purple Shirt Front.png" alt="Purple Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+  <div class="image-switcher">
+    <img id="productImage" src="../images/Purple Shirt Front.png" alt="Purple Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+    
+    <div class="image-buttons" style="margin-top:15px;">
+      <button onclick="showFront()" style="padding:8px 14px; margin-right:10px;">Front</button>
+      <button onclick="showBack()" style="padding:8px 14px;">Back</button>
+    </div>
+  </div>
 
   <div class="product-info">
     <h1>Purple Compression Shirt</h1>
 
     <p class="description">
-      A deep violet layer built for those who move with quiet power.  
-      Contour lines pulse across the torso like controlled energy, shaping a silhouette that feels enigmatic, focused, and unmistakably commanding.  
-      Designed for presence — a second skin for the ones who carry intensity beneath the surface.
+      A deep, spectral violet layer built for presence and control.  
+      Contour lines pulse across the torso like arcane circuitry, forming a silhouette that feels enigmatic, focused, and quietly dominant.
     </p>
 
     <h3>Choose Size</h3>
@@ -50,6 +56,16 @@
   </div>
 
 </section>
+
+<script>
+  function showFront() {
+    document.getElementById("productImage").src = "../images/Purple Shirt Front.png";
+  }
+
+  function showBack() {
+    document.getElementById("productImage").src = "../images/Purple Shirt Back.png";
+  }
+</script>
 
 </body>
 </html>
