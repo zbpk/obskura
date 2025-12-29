@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Dark Grey Compression Shirt — OBSKURA</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -10,24 +10,30 @@
 <header>
   <div class="logo">OBSKURA</div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="../index.html">Home</a>
+    <a href="../shop.html">Shop</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="product-page">
 
-  <img src="images/Dark Grey Shirt Front.png" alt="Dark Grey Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+  <div class="image-switcher">
+    <img id="productImage" src="../images/Dark Grey Shirt Front.png" alt="Dark Grey Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+    
+    <div class="image-buttons" style="margin-top:15px;">
+      <button onclick="showFront()" style="padding:8px 14px; margin-right:10px;">Front</button>
+      <button onclick="showBack()" style="padding:8px 14px;">Back</button>
+    </div>
+  </div>
 
   <div class="product-info">
     <h1>Dark Grey Compression Shirt</h1>
 
     <p class="description">
-      A steel‑tone layer built for those who move with quiet precision.  
-      Contour lines track the body like engineered circuitry, shaping a silhouette that feels industrial, controlled, and unshakeably calm.  
-      Designed for the ones who operate between light and shadow — steady, unreadable, and always in control.
+      A cold, industrial grey layer engineered for precision and restraint.  
+      Contour lines cut across the torso like muted circuitry, forming a silhouette that feels sharp, minimal, and quietly unbreakable.
     </p>
 
     <h3>Choose Size</h3>
@@ -50,6 +56,16 @@
   </div>
 
 </section>
+
+<script>
+  function showFront() {
+    document.getElementById("productImage").src = "../images/Dark Grey Shirt Front.png";
+  }
+
+  function showBack() {
+    document.getElementById("productImage").src = "../images/Dark Grey Shirt Back.png";
+  }
+</script>
 
 </body>
 </html>
