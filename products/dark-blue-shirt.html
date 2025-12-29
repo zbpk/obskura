@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Dark Blue Compression Shirt — OBSKURA</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -10,24 +10,30 @@
 <header>
   <div class="logo">OBSKURA</div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="../index.html">Home</a>
+    <a href="../shop.html">Shop</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="product-page">
 
-  <img src="images/Dark Blue Shirt Front.png" alt="Dark Blue Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+  <div class="image-switcher">
+    <img id="productImage" src="../images/Dark Blue Shirt Front.png" alt="Dark Blue Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+    
+    <div class="image-buttons" style="margin-top:15px;">
+      <button onclick="showFront()" style="padding:8px 14px; margin-right:10px;">Front</button>
+      <button onclick="showBack()" style="padding:8px 14px;">Back</button>
+    </div>
+  </div>
 
   <div class="product-info">
     <h1>Dark Blue Compression Shirt</h1>
 
     <p class="description">
-      A deep, midnight‑blue layer engineered for focus and control.  
-      Contour lines follow the body’s natural structure, creating a silhouette that feels disciplined, precise, and quietly powerful.  
-      Built for those who operate with calm intensity — steady, unreadable, unshaken.
+      A deep, midnight‑blue layer engineered for precision and calm intensity.  
+      Contour lines sweep across the torso like submerged circuitry, forming a silhouette that feels controlled, focused, and quietly powerful.
     </p>
 
     <h3>Choose Size</h3>
@@ -50,6 +56,16 @@
   </div>
 
 </section>
+
+<script>
+  function showFront() {
+    document.getElementById("productImage").src = "../images/Dark Blue Shirt Front.png";
+  }
+
+  function showBack() {
+    document.getElementById("productImage").src = "../images/Dark Blue Shirt Back.png";
+  }
+</script>
 
 </body>
 </html>
