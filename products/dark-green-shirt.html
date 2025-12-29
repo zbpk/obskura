@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Dark Green Compression Shirt — OBSKURA</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -10,24 +10,30 @@
 <header>
   <div class="logo">OBSKURA</div>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="../index.html">Home</a>
+    <a href="../shop.html">Shop</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
   </nav>
 </header>
 
 <section class="product-page">
 
-  <img src="images/Dark Green Shirt Front.png" alt="Dark Green Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+  <div class="image-switcher">
+    <img id="productImage" src="../images/Dark Green Shirt Front.png" alt="Dark Green Compression Shirt" class="product-image" style="width:350px; border-radius:10px;">
+    
+    <div class="image-buttons" style="margin-top:15px;">
+      <button onclick="showFront()" style="padding:8px 14px; margin-right:10px;">Front</button>
+      <button onclick="showBack()" style="padding:8px 14px;">Back</button>
+    </div>
+  </div>
 
   <div class="product-info">
     <h1>Dark Green Compression Shirt</h1>
 
     <p class="description">
-      A deep forest‑tone layer built for those who move with grounded intensity.  
-      Contour lines wrap the torso like living circuitry, shaping a silhouette that feels primal, controlled, and quietly unbreakable.  
-      Designed for stability and presence — a second skin for the ones who stand firm when everything else shifts.
+      A deep, forest‑coded layer built for discipline and quiet resilience.  
+      Contour lines wrap the torso like organic circuitry, forming a silhouette that feels grounded, tactical, and unwavering.
     </p>
 
     <h3>Choose Size</h3>
@@ -50,6 +56,16 @@
   </div>
 
 </section>
+
+<script>
+  function showFront() {
+    document.getElementById("productImage").src = "../images/Dark Green Shirt Front.png";
+  }
+
+  function showBack() {
+    document.getElementById("productImage").src = "../images/Dark Green Shirt Back.png";
+  }
+</script>
 
 </body>
 </html>
