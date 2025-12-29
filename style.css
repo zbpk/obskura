@@ -367,3 +367,35 @@ footer {
     font-size: 12px;
   }
 }
+
+/* ========================= */
+/*  SCROLL FADE-IN ANIMATION */
+/* ========================= */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================= */
+/*  PRODUCT HOVER UPGRADE    */
+/* ========================= */
+
+.products .product {
+    transition: 
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.products .product:hover {
+    transform: translateY(-6px);
+    border-color: #8f5aff;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+}
