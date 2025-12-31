@@ -399,7 +399,6 @@ footer {
     border-color: #8f5aff;
     box-shadow: 0 12px 30px rgba(0,0,0,0.55);
 }
-
 /* =============================== */
 /*  GLOBAL RESPONSIVE BEHAVIOR     */
 /* =============================== */
@@ -408,61 +407,61 @@ footer {
 html, body {
   width: 100%;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 /* Make text scale automatically */
-.hero h1 {
-  font-size: clamp(28px, 5vw, 40px);
-}
-
-.hero p {
-  font-size: clamp(14px, 2.5vw, 16px);
-}
-
+.hero h1,
 .section-header h2 {
-  font-size: clamp(16px, 3vw, 18px);
+  font-size: clamp(28px, 6vw, 40px);
+  line-height: 1.2;
 }
 
-/* Make buttons scale */
+.hero p,
+.section-header p {
+  font-size: clamp(14px, 3vw, 18px);
+  line-height: 1.5;
+}
+
+/* Button scaling */
 .btn {
-  padding: clamp(8px, 2vw, 11px) clamp(16px, 3vw, 22px);
-  font-size: clamp(11px, 2.5vw, 13px);
+  padding: clamp(10px, 2vw, 14px) clamp(20px, 4vw, 28px);
+  font-size: clamp(12px, 3vw, 16px);
 }
 
-/* Make product grid auto-fit smoothly */
+/* Product grid auto-fit */
 .products {
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
 }
 
-/* Universal shrink rule for small screens */
+/* Page padding scaling */
+.page {
+  padding: clamp(60px, 8vw, 100px) clamp(16px, 5vw, 60px);
+}
+
+/* Navigation scaling */
+nav a {
+  font-size: clamp(12px, 2vw, 14px);
+  margin-left: clamp(10px, 2vw, 20px);
+}
+
+/* Mobile tweaks */
 @media (max-width: 500px) {
-  * {
-    max-width: 100%;
-  }
-
-  .page {
-    padding: 70px 16px 50px;
-  }
-
-  nav a {
-    margin-left: 10px;
-    font-size: 11px;
-  }
-
   .hero {
     padding-top: 80px;
     gap: 24px;
+    text-align: center;
   }
-}
 
-/* Extra-small screens (under 400px) */
-@media (max-width: 400px) {
-  .hero h1 {
-    font-size: 24px;
+  .products {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 
   .btn {
-    padding: 8px 14px;
-    font-size: 11px;
+    display: block;
+    margin: 0 auto;
   }
 }
