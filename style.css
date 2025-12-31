@@ -465,3 +465,16 @@ nav a {
     margin: 0 auto;
   }
 }
+
+.shop-section {
+  margin-bottom: 80px;
+}
+
+.shop-title {
+  font-size: 22px;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+  color: #8a5cff;
+  text-transform: uppercase;
+  font-weight: 600;
+}
