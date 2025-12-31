@@ -478,3 +478,11 @@ nav a {
   text-transform: uppercase;
   font-weight: 600;
 }
+
+.shop-tabs {
+  position: sticky;
+  top: 70px; /* adjust based on your header height */
+  z-index: 10;
+  background: #000;
+  padding: 10px 0;
+}
