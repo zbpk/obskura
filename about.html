@@ -1,36 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OBSKURA — About</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <div class="logo">OBSKURA</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<!-- HEADER (matches your new global header) -->
+<header class="site-header">
+  <div class="header-left">
+    <div class="logo">OBSKURA</div>
+  </div>
+
+  <div class="header-right">
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- MOBILE MENU BUTTON -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
 </header>
 
-<section class="page">
-  <h1>About OBSKURA</h1>
-  <p>
+<!-- ABOUT PAGE CONTENT -->
+<section class="page" style="max-width: 800px; margin: 60px auto; text-align: center;">
+  <h1 style="color:#8f5aff; text-transform:uppercase; letter-spacing:6px; margin-bottom:20px;">
+    About OBSKURA
+  </h1>
+
+  <p style="opacity:0.8; margin-bottom:20px;">
     OBSKURA is a gymwear brand built for athletes who train with purpose.
     Our compression wear is engineered for performance, identity, and intensity.
     Minimal. Powerful. Unmistakable.
   </p>
 
-  <p>
+  <p style="opacity:0.8;">
     Every piece is designed with intention — clean lines, bold silhouettes,
     and a dark aesthetic that reflects the mindset of those who push themselves
     beyond limits.
   </p>
 </section>
+
+<!-- MOBILE MENU SCRIPT -->
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  });
+</script>
+
+<!-- HEADER SHADOW ON SCROLL -->
+<script>
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.site-header');
+    if (window.scrollY > 10) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
 
 </body>
 </html>
