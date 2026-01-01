@@ -1,105 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBSKURA — Train in the Shadows</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OBSKURA — Train in the Shadows</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+<!-- GLOBAL HEADER -->
+<header class="site-header">
+  <div class="header-left">
     <div class="logo">OBSKURA</div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="header-right">
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
+
+    <!-- MOBILE MENU BUTTON -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
 </header>
 
-<!-- FULLSCREEN HERO -->
-<section class="hero" style="
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(circle at center, #111 0%, #050505 100%);
-">
-    <h1 style="font-size: 80px; letter-spacing: 12px; text-transform: uppercase; color: #8f5aff;">
-        TRAIN IN THE SHADOWS
-    </h1>
-    <p style="font-size: 22px; opacity: 0.75; max-width: 700px; text-align: center;">
-        Gear engineered for the ones who don’t need the spotlight.  
-        Built for silence. Built for obsession. Built for the underground.
-    </p>
-    <a class="btn" href="shop.html">Enter the Collection</a>
+<!-- HERO SECTION -->
+<section class="hero">
+  <h1>TRAIN IN THE SHADOWS</h1>
+  <p>
+    Gear engineered for the ones who don’t need the spotlight.  
+    Built for silence. Built for obsession. Built for the underground.
+  </p>
+  <a class="btn" href="shop.html">Enter the Collection</a>
 </section>
 
 <!-- DARK STRIP SECTION -->
-<section style="
-    padding: 60px 40px;
-    background: #0a0a0a;
-    text-align: center;
-    border-top: 1px solid #111;
-    border-bottom: 1px solid #111;
-">
-    <h2 style="color:#8f5aff; text-transform:uppercase; letter-spacing:6px; font-size: 28px;">
-        The Underground Uniform
-    </h2>
-    <p style="opacity:0.75; max-width: 700px; margin: 20px auto;">
-        OBSKURA is built for athletes who train when no one’s watching.  
-        Compression gear that feels like armor — sleek, minimal, and engineered for intensity.
-    </p>
+<section class="dark-strip">
+  <h2>The Underground Uniform</h2>
+  <p>
+    OBSKURA is built for athletes who train when no one’s watching.  
+    Compression gear that feels like armor — sleek, minimal, and engineered for intensity.
+  </p>
 </section>
 
-<!-- 🔥 HOT RIGHT NOW -->
-<div class="section-header" style="padding: 40px 40px 10px;">
-    <h2 style="color:#8f5aff; text-transform:uppercase; letter-spacing:6px;">Hot Right Now</h2>
-    <p style="opacity:0.75;">Silhouettes moving fastest through the underground.</p>
+<!-- HOT RIGHT NOW -->
+<div class="section-header">
+  <h2>Hot Right Now</h2>
+  <p>Silhouettes moving fastest through the underground.</p>
 </div>
 
 <section class="products">
 
-    <!-- Black Compression Shirt -->
-    <a href="products/black-shirt.html" class="product">
-        <img src="images/Black Shirt Front.png" alt="Black Compression Shirt">
-        <h3>Black Compression Shirt</h3>
-        <div class="price">$45.00</div>
-    </a>
+  <a href="products/black-shirt.html" class="product">
+    <img src="images/Black Shirt Front.png" alt="Black Compression Shirt">
+    <h3>Black Compression Shirt</h3>
+    <div class="price">$45.00</div>
+  </a>
 
-    <!-- Dark Green Compression Shirt -->
-    <a href="products/dark-green-shirt.html" class="product">
-        <img src="images/Dark Green Shirt Front.png" alt="Dark Green Compression Shirt">
-        <h3>Dark Green Compression Shirt</h3>
-        <div class="price">$45.00</div>
-    </a>
+  <a href="products/dark-green-shirt.html" class="product">
+    <img src="images/Dark Green Shirt Front.png" alt="Dark Green Compression Shirt">
+    <h3>Dark Green Compression Shirt</h3>
+    <div class="price">$45.00</div>
+  </a>
 
-    <!-- Light Grey Compression Shirt -->
-    <a href="products/light-grey-shirt.html" class="product">
-        <img src="images/Light Grey Shirt Front.png" alt="Light Grey Compression Shirt">
-        <h3>Light Grey Compression Shirt</h3>
-        <div class="price">$45.00</div>
-    </a>
+  <a href="products/light-grey-shirt.html" class="product">
+    <img src="images/Light Grey Shirt Front.png" alt="Light Grey Compression Shirt">
+    <h3>Light Grey Compression Shirt</h3>
+    <div class="price">$45.00</div>
+  </a>
 
 </section>
 
 <!-- BRAND PHILOSOPHY -->
-<section class="page">
-    <h2 style="color:#8f5aff; text-transform:uppercase; letter-spacing:6px;">Why OBSKURA Exists</h2>
-    <p style="opacity:0.8; margin-top:15px;">
-        This brand is for the ones who train alone.  
-        The ones who build themselves in basements, garages, and late‑night gyms.  
-        The ones who don’t need applause — only progress.
-    </p>
-    <p style="opacity:0.8; margin-top:15px;">
-        OBSKURA is the uniform of the unseen.  
-        Minimal. Technical. Ruthless.  
-        Designed for athletes who move in silence.
-    </p>
+<section class="page philosophy">
+  <h2>Why OBSKURA Exists</h2>
+  <p>
+    This brand is for the ones who train alone.  
+    The ones who build themselves in basements, garages, and late‑night gyms.  
+    The ones who don’t need applause — only progress.
+  </p>
+  <p>
+    OBSKURA is the uniform of the unseen.  
+    Minimal. Technical. Ruthless.  
+    Designed for athletes who move in silence.
+  </p>
 </section>
+
+<!-- MOBILE MENU SCRIPT -->
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  });
+</script>
+
+<!-- HEADER SHADOW ON SCROLL -->
+<script>
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.site-header');
+    if (window.scrollY > 10) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
 
 </body>
 </html>
