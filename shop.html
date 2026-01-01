@@ -114,5 +114,19 @@
   });
 </script>
 
+<script>
+  const tabContainer = document.querySelector('.shop-tabs');
+  const leftArrow = document.querySelector('.tab-arrow.left');
+  const rightArrow = document.querySelector('.tab-arrow.right');
+
+  leftArrow.addEventListener('click', () => {
+    tabContainer.scrollBy({ left: -200, behavior: 'smooth' });
+  });
+
+  rightArrow.addEventListener('click', () => {
+    tabContainer.scrollBy({ left: 200, behavior: 'smooth' });
+  });
+</script>
+  
 </body>
 </html>
