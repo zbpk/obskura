@@ -1,33 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OBSKURA — Contact</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <div class="logo">OBSKURA</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<!-- HEADER (global OBSKURA header) -->
+<header class="site-header">
+  <div class="header-left">
+    <div class="logo">OBSKURA</div>
+  </div>
+
+  <div class="header-right">
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- MOBILE MENU BUTTON -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
 </header>
 
-<section class="page">
-  <h1>Contact Us</h1>
-  <p>Have questions about OBSKURA? Reach out below.</p>
+<!-- CONTACT PAGE CONTENT -->
+<section class="page" style="max-width: 800px; margin: 60px auto; text-align: center;">
+  <h1 style="color:#8f5aff; text-transform:uppercase; letter-spacing:6px; margin-bottom:20px;">
+    Contact Us
+  </h1>
 
-  <form class="contact-form">
-    <input type="text" placeholder="Your Name">
-    <input type="email" placeholder="Your Email">
-    <textarea placeholder="Your Message"></textarea>
-    <button class="btn">Send</button>
+  <p style="opacity:0.8; margin-bottom:30px;">
+    Have questions about OBSKURA? Reach out below.
+  </p>
+
+  <!-- WORKING EMAIL FORM -->
+  <form class="contact-form"
+        action="https://formsubmit.co/obskura.noreply@gmail.com"
+        method="POST"
+        style="display:flex; flex-direction:column; gap:20px; margin-top:20px;">
+
+    <!-- Disable CAPTCHA -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- Redirect after sending -->
+    <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+
+    <input type="text" name="name" placeholder="Your Name" required
+           style="padding:14px; background:#111; border:1px solid #222; color:#fff; border-radius:6px;">
+
+    <input type="email" name="email" placeholder="Your Email" required
+           style="padding:14px; background:#111; border:1px solid #222; color:#fff; border-radius:6px;">
+
+    <textarea name="message" placeholder="Your Message" required
+              style="padding:14px; background:#111; border:1px solid #222; color:#fff; border-radius:6px; height:140px;"></textarea>
+
+    <button class="btn"
+            style="padding:14px; background:#8f5aff; border:none; color:#000; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer; border-radius:6px;">
+      Send
+    </button>
   </form>
 </section>
+
+<!-- MOBILE MENU SCRIPT -->
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  });
+</script>
+
+<!-- HEADER SHADOW ON SCROLL -->
+<script>
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.site-header');
+    if (window.scrollY > 10) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
 
 </body>
 </html>
