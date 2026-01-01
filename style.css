@@ -306,3 +306,45 @@ html, body {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* Wrapper for arrows + scrollable tabs */
+.shop-tabs-wrapper {
+  position: sticky;
+  top: 70px;
+  z-index: 20;
+  background: #000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+/* Arrow buttons */
+.tab-arrow {
+  background: #111;
+  border: 1px solid #222;
+  color: #aaa;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.tab-arrow:hover {
+  background: #8a5cff;
+  color: #fff;
+  border-color: #8a5cff;
+}
+
+/* Scrollable tab bar stays the same */
+.shop-tabs {
+  flex: 1;
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  scrollbar-width: none;
+}
+
+.shop-tabs::-webkit-scrollbar {
+  display: none;
+}
