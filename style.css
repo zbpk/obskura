@@ -549,3 +549,64 @@ nav a {
 .tab-btn:hover {
   color: #fff;
 }
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+h1 {
+  font-size: clamp(28px, 6vw, 48px);
+}
+
+h2 {
+  font-size: clamp(20px, 4vw, 32px);
+}
+
+h3 {
+  font-size: clamp(16px, 3vw, 22px);
+}
+
+p, a, li, button {
+  font-size: clamp(14px, 2.5vw, 18px);
+}
+.page {
+  padding: clamp(40px, 6vw, 100px) clamp(16px, 5vw, 60px);
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+}
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+nav a {
+  font-size: clamp(12px, 2vw, 16px);
+  margin-left: clamp(10px, 2vw, 24px);
+}
+.shop-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 12px 0;
+  background: #000;
+  scrollbar-width: none;
+}
+
+.shop-tabs::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 600px) {
+  header nav {
+    display: none; /* or convert to hamburger later */
+  }
+
+  .hero {
+    text-align: center;
+  }
+}
