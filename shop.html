@@ -1,26 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OBSKURA — Shop</title>
   <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 
-<header>
-  <div class="logo">OBSKURA</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<!-- GLOBAL HEADER -->
+<header class="site-header">
+  <div class="header-left">
+    <div class="logo">OBSKURA</div>
+  </div>
+
+  <div class="header-right">
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- MOBILE MENU BUTTON -->
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
 </header>
 
-<section class="page">
-  <h1>Shop</h1>
-  <p>Premium compression wear engineered for performance and identity.</p>
+<!-- SHOP HEADER -->
+<section class="page" style="text-align:center; max-width:900px; margin:auto;">
+  <h1 style="color:#8f5aff; text-transform:uppercase; letter-spacing:6px;">Shop</h1>
+  <p style="opacity:0.75;">Premium compression wear engineered for performance and identity.</p>
 
   <div class="shop-tabs">
     <button class="tab-btn active" data-target="tshirts">T‑Shirts</button>
@@ -30,7 +45,7 @@
     <button class="tab-btn" data-target="underwear">Underwear</button>
     <button class="tab-btn" data-target="hoodies">Hoodies</button>
     <button class="tab-btn" data-target="zipups">Zip‑Ups</button>
-    <button class="tab-btn" data-target="beanies">Beanies</button>
+    <button class="tab-btn" data-target="accessories">Accessories</button>
   </div>
 </section>
 
@@ -123,83 +138,103 @@
   </div>
 </section>
 
-
 <!-- ========================= -->
 <!--   LONG SLEEVES            -->
 <!-- ========================= -->
-<section class="shop-section" id="Long Sleeves">
+<section class="shop-section" id="longsleeves" style="display:none;">
   <h2 class="shop-title">LONG SLEEVES</h2>
-  <div class="products">
-    <!-- Add long sleeve products here -->
-  </div>
+  <div class="products"></div>
 </section>
 
-
 <!-- ========================= -->
-<!--         SHORTS            -->
+<!-- SHORTS -->
 <!-- ========================= -->
-<section class="shop-section" id="Shorts">
+<section class="shop-section" id="shorts" style="display:none;">
   <h2 class="shop-title">SHORTS</h2>
-  <div class="products">
-    <!-- Add shorts here -->
-  </div>
+  <div class="products"></div>
 </section>
 
-
 <!-- ========================= -->
-<!--    GYM EQUIPMENT          -->
+<!-- EQUIPMENT -->
 <!-- ========================= -->
-<section class="shop-section" id="Gym Equipment">
+<section class="shop-section" id="equipment" style="display:none;">
   <h2 class="shop-title">GYM EQUIPMENT</h2>
-  <div class="products">
-    <!-- Add equipment here -->
-  </div>
+  <div class="products"></div>
 </section>
 
-
 <!-- ========================= -->
-<!--       UNDERWEAR           -->
+<!-- UNDERWEAR -->
 <!-- ========================= -->
-<section class="shop-section" id="Underwear">
+<section class="shop-section" id="underwear" style="display:none;">
   <h2 class="shop-title">UNDERWEAR</h2>
-  <div class="products">
-    <!-- Add underwear here -->
-  </div>
+  <div class="products"></div>
 </section>
 
-
 <!-- ========================= -->
-<!--        HOODIES            -->
+<!-- HOODIES -->
 <!-- ========================= -->
-<section class="shop-section" id="Hoodies">
+<section class="shop-section" id="hoodies" style="display:none;">
   <h2 class="shop-title">HOODIES</h2>
-  <div class="products">
-    <!-- Add hoodies here -->
-  </div>
+  <div class="products"></div>
 </section>
 
-
 <!-- ========================= -->
-<!--        ZIP‑UPS            -->
+<!-- ZIPUPS -->
 <!-- ========================= -->
-<section class="shop-section" id="Zip-Ups">
+<section class="shop-section" id="zipups" style="display:none;">
   <h2 class="shop-title">ZIP‑UPS</h2>
-  <div class="products">
-    <!-- Add zip-ups here -->
-  </div>
+  <div class="products"></div>
 </section>
 
-
 <!-- ========================= -->
-<!--        BEANIES            -->
+<!-- ACCESSORIES -->
 <!-- ========================= -->
-<section class="shop-section" id="Accessories">
-  <h2 class="shop-title">Accessories</h2>
-  <div class="products">
-    <!-- Add beanies here -->
-  </div>
+<section class="shop-section" id="accessories" style="display:none;">
+  <h2 class="shop-title">ACCESSORIES</h2>
+  <div class="products"></div>
 </section>
 
+<!-- TAB SWITCHING SCRIPT -->
+<script>
+  const buttons = document.querySelectorAll('.tab-btn');
+  const sections = document.querySelectorAll('.shop-section');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      sections.forEach(sec => sec.style.display = 'none');
+
+      const target = btn.getAttribute('data-target');
+      document.getElementById(target).style.display = 'block';
+    });
+  });
+</script>
+
+<!-- MOBILE MENU SCRIPT -->
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  });
+</script>
+
+<!-- HEADER SHADOW ON SCROLL -->
+<script>
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.site-header');
+    if (window.scrollY > 10) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
 
 </body>
 </html>
