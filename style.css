@@ -508,3 +508,44 @@ nav a {
   transform: translateY(-4px);
   opacity: 0.9;
 }
+.shop-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 12px 0;
+  position: sticky;
+  top: 70px;
+  z-index: 10;
+  background: #000;
+  scrollbar-width: none;
+}
+
+.shop-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  background: #111;
+  border: none;
+  color: #777;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 14px;
+  transition: 0.25s ease;
+  white-space: nowrap;
+}
+
+.tab-btn.active {
+  background: #8a5cff;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(138,92,255,0.35);
+}
+
+.tab-btn:hover {
+  color: #fff;
+}
