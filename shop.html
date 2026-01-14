@@ -127,40 +127,13 @@
   </div>
 </section>
 
-<section class="shop-section" id="longsleeves" style="display:none;">
-  <h2 class="shop-title">LONG SLEEVES</h2>
-  <div class="products"></div>
-</section>
-
-<section class="shop-section" id="shorts" style="display:none;">
-  <h2 class="shop-title">SHORTS</h2>
-  <div class="products"></div>
-</section>
-
-<section class="shop-section" id="equipment" style="display:none;">
-  <h2 class="shop-title">GYM EQUIPMENT</h2>
-  <div class="products"></div>
-</section>
-
-<section class="shop-section" id="underwear" style="display:none;">
-  <h2 class="shop-title">UNDERWEAR</h2>
-  <div class="products"></div>
-</section>
-
-<section class="shop-section" id="hoodies" style="display:none;">
-  <h2 class="shop-title">HOODIES</h2>
-  <div class="products"></div>
-</section>
-
-<section class="shop-section" id="zipups" style="display:none;">
-  <h2 class="shop-title">ZIP‑UPS</h2>
-  <div class="products"></div>
-</section>
-
-<section class="shop-section" id="accessories" style="display:none;">
-  <h2 class="shop-title">ACCESSORIES</h2>
-  <div class="products"></div>
-</section>
+<section class="shop-section" id="longsleeves" style="display:none;"><h2 class="shop-title">LONG SLEEVES</h2><div class="products"></div></section>
+<section class="shop-section" id="shorts" style="display:none;"><h2 class="shop-title">SHORTS</h2><div class="products"></div></section>
+<section class="shop-section" id="equipment" style="display:none;"><h2 class="shop-title">GYM EQUIPMENT</h2><div class="products"></div></section>
+<section class="shop-section" id="underwear" style="display:none;"><h2 class="shop-title">UNDERWEAR</h2><div class="products"></div></section>
+<section class="shop-section" id="hoodies" style="display:none;"><h2 class="shop-title">HOODIES</h2><div class="products"></div></section>
+<section class="shop-section" id="zipups" style="display:none;"><h2 class="shop-title">ZIP‑UPS</h2><div class="products"></div></section>
+<section class="shop-section" id="accessories" style="display:none;"><h2 class="shop-title">ACCESSORIES</h2><div class="products"></div></section>
 
 <script>
   const buttons = document.querySelectorAll('.tab-btn');
@@ -170,7 +143,6 @@
     btn.addEventListener('click', () => {
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
       sections.forEach(sec => sec.style.display = 'none');
       const target = btn.getAttribute('data-target');
       document.getElementById(target).style.display = 'block';
@@ -179,21 +151,16 @@
 
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
-
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('open');
     hamburger.classList.toggle('open');
   });
 
   const tabContainer = document.querySelector('.shop-tabs');
-  const leftArrow = document.querySelector('.tab-arrow.left');
-  const rightArrow = document.querySelector('.tab-arrow.right');
-
-  leftArrow.addEventListener('click', () => {
+  document.querySelector('.tab-arrow.left').addEventListener('click', () => {
     tabContainer.scrollBy({ left: -200, behavior: 'smooth' });
   });
-
-  rightArrow.addEventListener('click', () => {
+  document.querySelector('.tab-arrow.right').addEventListener('click', () => {
     tabContainer.scrollBy({ left: 200, behavior: 'smooth' });
   });
 </script>
