@@ -1,150 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OBSKURA — Train in the Shadows</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+// OBSKURA Global Cart Logic
+let cart = JSON.parse(localStorage.getItem('obskuraCart')) || [];
 
-<body>
-<section class="top-banner">
-  <div class="banner-image"></div>
-  <div class="banner-logo">OBSKURA</div>
-</section>
+// Path Detection: Ensures 'checkout.html' is found from any page
+const isProductPage = window.location.pathname.includes('/products/');
+const checkoutPath = isProductPage ? '../checkout.html' : 'checkout.html';
 
-<!-- GLOBAL HEADER -->
-<header class="site-header">
-  <div class="header-left">
-    <div class="logo">OBSKURA</div>
-  </div>
+function updateCartUI() {
+    const container = document.getElementById('cartItems');
+    const countLabels = document.querySelectorAll('.cart-count');
+    const subtotalLabel = document.getElementById('cartSubtotal');
+    
+    countLabels.forEach(label => label.innerText = cart.length);
+    localStorage.setItem('obskuraCart', JSON.stringify(cart));
 
-  <div class="header-right">
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    if (!container) return;
 
-    <!-- MOBILE MENU BUTTON -->
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-</header>
-
-<!-- HERO SECTION -->
-<section class="hero">
-
-  <!-- ⭐ ADDED BACKDROP (ONLY ADDITION YOU REQUESTED) -->
-  <div class="hero-backdrop"></div>
-
-  <h1>TRAIN IN THE SHADOWS</h1>
-  <p>
-    Gear engineered for the ones who don’t need the spotlight.  
-    Built for silence. Built for obsession. Built for the underground.
-  </p>
-  <a class="btn" href="shop.html">Enter the Collection</a>
-</section>
-
-<!-- DARK STRIP SECTION -->
-<section class="dark-strip">
-  <h2>The Underground Uniform</h2>
-  <p>
-    OBSKURA is built for athletes who train when no one’s watching.  
-    Compression gear that feels like armor — sleek, minimal, and engineered for intensity.
-  </p>
-</section>
-
-<!-- HOT RIGHT NOW -->
-<div class="section-header">
-  <h2>Hot Right Now</h2>
-  <p>Silhouettes moving fastest through the underground.</p>
-</div>
-
-<section class="products">
-
-  <a href="products/black-shirt.html" class="product">
-    <img src="images/Black Shirt Front.png" alt="Black Compression Shirt">
-    <h3>Black Compression Shirt</h3>
-    <div class="price">$45.00</div>
-  </a>
-
-  <a href="products/dark-green-shirt.html" class="product">
-    <img src="images/Dark Green Shirt Front.png" alt="Dark Green Compression Shirt">
-    <h3>Dark Green Compression Shirt</h3>
-    <div class="price">$45.00</div>
-  </a>
-
-  <a href="products/light-grey-shirt.html" class="product">
-    <img src="images/Light Grey Shirt Front.png" alt="Light Grey Compression Shirt">
-    <h3>Light Grey Compression Shirt</h3>
-    <div class="price">$45.00</div>
-  </a>
-
-</section>
-
-<!-- BRAND PHILOSOPHY -->
-<section class="page philosophy">
-  <h2>Why OBSKURA Exists</h2>
-  <p>
-    This brand is for the ones who train alone.  
-    The ones who build themselves in basements, garages, and late‑night gyms.  
-    The ones who don’t need applause — only progress.
-  </p>
-  <p>
-    OBSKURA is the uniform of the unseen.  
-    Minimal. Technical. Ruthless.  
-    Designed for athletes who move in silence.
-  </p>
-</section>
-
-<!-- MOBILE MENU SCRIPT -->
-<script>
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open');
-  });
-</script>
-
-<!-- HEADER SHADOW ON SCROLL -->
-<script>
-  window.addEventListener('scroll', () => {
-    const header = document.querySelector('.site-header');
-    if (window.scrollY > 10) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+    if (cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center; opacity:0.5; margin-top:50px;">YOUR BAG IS EMPTY</p>';
+        if (subtotalLabel) subtotalLabel.innerText = '$0.00';
+        return;
     }
-  });
-</script>
-<div class="cart-trigger" onclick="toggleCart()">
-    <span class="cart-count">0</span>
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-</div>
 
-<div class="cart-overlay" onclick="toggleCart()"></div>
-<div class="cart-sidebar" id="cartSidebar">
-    <div style="padding: 30px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #222;">
-        <h2 style="font-size:0.8rem; letter-spacing:3px;">YOUR BAG</h2>
-        <span onclick="toggleCart()" style="cursor:pointer;">CLOSE ✕</span>
-    </div>
-    <div id="cartItems" style="padding: 30px; flex-grow:1; overflow-y:auto;"></div>
-    <div style="padding: 30px; border-top:1px solid #222;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:20px; font-weight:600;">
-            <span>TOTAL</span>
-            <span id="cartSubtotal">$0.00</span>
+    container.innerHTML = cart.map((item, index) => `
+        <div style="display:flex; gap:15px; margin-bottom:20px; align-items:center; border-bottom:1px solid #27272a; padding-bottom:15px;">
+            <img src="${isProductPage ? '../' : ''}${item.image}" style="width:60px; height:75px; object-fit:cover;">
+            <div style="flex-grow:1;">
+                <h4 style="font-size:0.7rem; text-transform:uppercase; margin:0; letter-spacing:1px;">${item.name}</h4>
+                <p style="color:#8f5aff; font-weight:600; margin:5px 0 0 0;">$${item.price}</p>
+            </div>
+            <span style="cursor:pointer; opacity:0.5;" onclick="removeFromCart(${index})">✕</span>
         </div>
-        <button onclick="location.href='checkout.html'" style="width:100%; padding:15px; background:#8f5aff; color:white; border:none; font-weight:bold; cursor:pointer;">PROCEED TO CHECKOUT</button>
-    </div>
-</div>
+    `).join('');
 
-<script src="app.js"></script>
-</body>
-</html>
+    const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+    if (subtotalLabel) subtotalLabel.innerText = `$${total.toFixed(2)}`;
+    
+    // Fix the checkout button link dynamically
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if (checkoutBtn) checkoutBtn.onclick = () => window.location.href = checkoutPath;
+}
+
+function addToBag() {
+    const productName = document.querySelector('h1')?.innerText || "Unknown Product";
+    const productPrice = document.querySelector('.price')?.innerText.replace('$', '') || "0.00";
+    const productImg = document.getElementById('img-front')?.getAttribute('src') || "";
+
+    cart.push({ name: productName, price: productPrice, image: productImg });
+    updateCartUI();
+    toggleCart(true); 
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+}
+
+function toggleCart(forceOpen = false) {
+    const sidebar = document.getElementById('cartSidebar');
+    const overlay = document.querySelector('.cart-overlay');
+    if (forceOpen) {
+        sidebar.classList.add('open');
+        overlay.classList.add('open');
+    } else {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('open');
+    }
+}
+
+// Initialize UI on load
+window.addEventListener('load', updateCartUI);
