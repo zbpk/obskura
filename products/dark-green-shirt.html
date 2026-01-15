@@ -216,5 +216,27 @@
             if (event.target == modal) toggleModal(false);
         }
     </script>
+    <div class="cart-trigger" onclick="toggleCart()">
+    <span class="cart-count">0</span>
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+</div>
+
+<div class="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+    <div style="padding: 30px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #222;">
+        <h2 style="font-size:0.8rem; letter-spacing:3px;">YOUR BAG</h2>
+        <span onclick="toggleCart()" style="cursor:pointer;">CLOSE ✕</span>
+    </div>
+    <div id="cartItems" style="padding: 30px; flex-grow:1; overflow-y:auto;"></div>
+    <div style="padding: 30px; border-top:1px solid #222;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px; font-weight:600;">
+            <span>TOTAL</span>
+            <span id="cartSubtotal">$0.00</span>
+        </div>
+        <button onclick="location.href='checkout.html'" style="width:100%; padding:15px; background:#8f5aff; color:white; border:none; font-weight:bold; cursor:pointer;">PROCEED TO CHECKOUT</button>
+    </div>
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
