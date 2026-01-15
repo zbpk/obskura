@@ -24,6 +24,9 @@
       <a href="shop.html">Shop</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
+      <a href="#" onclick="toggleCart(); return false;" class="nav-cart">
+        BAG (<span class="cart-count">0</span>)
+      </a>
     </nav>
 
     <div class="hamburger">
@@ -35,9 +38,7 @@
 </header>
 
 <section class="hero">
-
   <div class="hero-backdrop"></div>
-
   <h1>TRAIN IN THE SHADOWS</h1>
   <p>
     Gear engineered for the ones who don’t need the spotlight.  
@@ -47,7 +48,6 @@
 </section>
 
 <section class="page product-grid">
-  
   <a href="products/black-shirt.html" class="product">
     <img src="images/Black Shirt Front.png" alt="Black Compression Shirt">
     <h3>Black Compression Shirt</h3>
@@ -71,7 +71,6 @@
     <h3>Light Grey Compression Shirt</h3>
     <div class="price">$45.00</div>
   </a>
-
 </section>
 
 <section class="page philosophy">
@@ -87,27 +86,6 @@
     Designed for athletes who move in silence.
   </p>
 </section>
-
-<script>
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open');
-  });
-</script>
-
-<script>
-  window.addEventListener('scroll', () => {
-    const header = document.querySelector('.site-header');
-    if (window.scrollY > 10) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-</script>
 
 <div class="cart-trigger" onclick="toggleCart()">
     <span class="cart-count">0</span>
@@ -126,21 +104,42 @@
         <span onclick="toggleCart()" style="cursor:pointer;">CLOSE ✕</span>
     </div>
     
-    <div id="cartItems" style="padding: 30px; flex-grow:1; overflow-y:auto;">
-        </div>
+    <div id="cartItems" style="padding: 30px; flex-grow:1; overflow-y:auto;"></div>
 
     <div style="padding: 30px; border-top:1px solid #222;">
         <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
             <span style="font-size:0.7rem; opacity:0.5; text-transform:uppercase;">Subtotal</span>
             <span id="cartSubtotal" style="font-weight:600;">$0.00</span>
         </div>
-        <button id="checkoutBtn" style="width:100%; padding:18px; background:#8f5aff; color:black; border:none; font-weight:800; letter-spacing:2px; cursor:pointer; text-transform:uppercase;">
+        <button onclick="location.href='https://zbpk.github.io/obskura/checkout.html'" 
+                style="width:100%; padding:18px; background:#8f5aff; color:black; border:none; font-weight:800; letter-spacing:2px; cursor:pointer; text-transform:uppercase;">
             Checkout
         </button>
     </div>
 </div>
 
 <script src="app.js"></script>
+
+<script>
+  // Mobile Menu Logic
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  });
+
+  // Header Scroll Effect
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.site-header');
+    if (window.scrollY > 10) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
 
 </body>
 </html>
