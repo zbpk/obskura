@@ -7,36 +7,87 @@
     <script src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="style.css">
     <style>
-        :root { --accent: #8f5aff; --bg: #0a0a0a; --surface: #141414; --border: #27272a; }
-        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; }
-        .checkout-layout { display: grid; grid-template-columns: 1fr 450px; min-height: 100vh; }
+        :root { 
+            --accent: #8f5aff; 
+            --bg: #0a0a0a; 
+            --surface: #141414; 
+            --border: #27272a; 
+        }
+        body { 
+            background: var(--bg); 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+        }
+        .checkout-layout { 
+            display: grid; 
+            grid-template-columns: 1fr 450px; 
+            min-height: 100vh; 
+        }
         
         .checkout-form { padding: 80px 10%; }
         .input-group { margin-bottom: 25px; }
-        label { display: block; font-size: 0.7rem; color: #a1a1aa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        label { 
+            display: block; 
+            font-size: 0.7rem; 
+            color: #a1a1aa; 
+            margin-bottom: 8px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
         input, #card-element { 
-            width: 100%; padding: 15px; background: var(--surface); 
-            border: 1px solid var(--border); color: white; outline: none; 
+            width: 100%; 
+            padding: 15px; 
+            background: var(--surface); 
+            border: 1px solid var(--border); 
+            color: white; 
+            outline: none; 
         }
 
         #card-element { padding: 18px; }
         #card-errors { color: #ff4d4d; font-size: 0.75rem; margin-top: 10px; }
 
-        .order-summary { background: #0c0c0c; border-left: 1px solid var(--border); padding: 80px 50px; }
-        .summary-item { display: flex; gap: 20px; margin-bottom: 25px; align-items: center; }
-        .summary-img { width: 70px; height: 90px; object-fit: cover; background: #1a1a1a; }
+        .order-summary { 
+            background: #0c0c0c; 
+            border-left: 1px solid var(--border); 
+            padding: 80px 50px; 
+        }
+        .summary-item { 
+            display: flex; 
+            gap: 20px; 
+            margin-bottom: 25px; 
+            align-items: center; 
+        }
+        .summary-img { 
+            width: 70px; 
+            height: 90px; 
+            object-fit: cover; 
+            background: #1a1a1a; 
+        }
 
         .btn { 
-            width: 100%; padding: 20px; background: var(--accent); color: black; 
-            font-weight: 800; border: none; cursor: pointer; margin-top: 30px;
-            letter-spacing: 2px; transition: 0.3s;
+            width: 100%; 
+            padding: 20px; 
+            background: var(--accent); 
+            color: black; 
+            font-weight: 800; 
+            border: none; 
+            cursor: pointer; 
+            margin-top: 30px;
+            letter-spacing: 2px; 
+            transition: 0.3s;
         }
         .btn:hover { background: #7a46e6; }
         .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
         @media (max-width: 900px) {
             .checkout-layout { grid-template-columns: 1fr; }
-            .order-summary { order: -1; padding: 40px 10%; border-left: none; border-bottom: 1px solid var(--border); }
+            .order-summary { 
+                order: -1; 
+                padding: 40px 10%; 
+                border-left: none; 
+                border-bottom: 1px solid var(--border); 
+            }
         }
     </style>
 </head>
@@ -94,17 +145,23 @@
     </div>
 
     <script>
-        const stripe = Stripe('pk_test_your_key_here'); // Replace with your key
+        // Stripe Configuration
+        const stripe = Stripe('pk_test_your_key_here'); // Replace with your live or test key
         const elements = stripe.elements();
         const card = elements.create('card', {
             style: {
-                base: { color: '#ffffff', fontFamily: 'Inter, sans-serif', fontSize: '16px', '::placeholder': { color: '#555' } },
+                base: { 
+                    color: '#ffffff', 
+                    fontFamily: 'Inter, sans-serif', 
+                    fontSize: '16px', 
+                    '::placeholder': { color: '#555' } 
+                },
                 invalid: { color: '#ff4d4d' }
             }
         });
         card.mount('#card-element');
 
-        // Load Cart Data
+        // Load and Display Cart Data from localStorage
         const cart = JSON.parse(localStorage.getItem('obskuraCart')) || [];
         const summaryContainer = document.getElementById('summaryItems');
         
@@ -127,6 +184,7 @@
             document.getElementById('grandTotal').innerText = `$${total.toFixed(2)}`;
         }
 
+        // Handle Payment Submission
         const formBtn = document.getElementById('submit-button');
         formBtn.addEventListener('click', async () => {
             formBtn.disabled = true;
@@ -139,7 +197,7 @@
                 formBtn.disabled = false;
                 formBtn.innerText = "PAY SECURELY";
             } else {
-                // Simulation of a successful payment
+                // Successful Payment Simulation
                 console.log('Stripe Token:', token);
                 alert("Payment Authorized. Thank you for shopping with OBSKURA.");
                 localStorage.removeItem('obskuraCart');
