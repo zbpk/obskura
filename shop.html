@@ -1,177 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop All | OBSKURA</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <style>
-        :root { --accent: #8f5aff; --bg: #000; }
-        body { background: var(--bg); color: #fff; margin: 0; font-family: 'Inter', sans-serif; }
-
-        .shop-page-container {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 40px;
-            padding: 140px 5% 80px;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        /* Sidebar & Filters */
-        .filters-sidebar h4 {
-            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
-            margin-bottom: 20px; color: var(--accent); border-bottom: 1px solid #1a1a1a; padding-bottom: 10px;
-        }
-        .filter-list { list-style: none; padding: 0; margin-bottom: 40px; }
-        .filter-list li {
-            margin-bottom: 12px; font-size: 0.85rem; color: #555;
-            cursor: pointer; transition: 0.3s;
-        }
-        .filter-list li:hover, .filter-list li.active { color: #fff; }
-
-        /* Top Bar (Sorting) */
-        .shop-controls {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 30px; border-bottom: 1px solid #111; padding-bottom: 20px;
-        }
-        select {
-            background: #000; color: #fff; border: 1px solid #222;
-            padding: 10px; font-family: inherit; font-size: 0.8rem; outline: none;
-        }
-
-        /* Product Grid */
-        .shop-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .product-card { 
-            display: block; text-decoration: none; color: inherit; background: #0d0d0d;
-            border: 1px solid #111; transition: 0.4s;
-        }
-        .product-card:hover { border-color: var(--accent); }
-        .product-card img { width: 100%; height: 350px; object-fit: contain; background: #111; }
-        .card-info { padding: 20px; text-align: center; }
-        .card-info h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #888; margin: 0; }
-        .price-tag { font-weight: 800; color: var(--accent); margin-top: 10px; }
-
-        @media (max-width: 900px) {
-            .shop-page-container { grid-template-columns: 1fr; padding-top: 100px; }
-            .filters-sidebar { display: none; }
-        }
-    </style>
-</head>
-<body>
-
-<header class="site-header">
-    <div style="font-weight:900; letter-spacing:4px; font-size: 1.2rem;">OBSKURA</div>
-    <nav>
-        <a href="index.html" class="nav-link" style="color:#fff; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">HOME</a>
-    </nav>
-</header>
-
 <div class="shop-page-container">
     <aside class="filters-sidebar">
-        <h4>Collection</h4>
-        <ul class="filter-list" id="collection-filters">
-            <li class="active" data-filter="all">All Items</li>
-            <li data-filter="core">Core Essentials</li>
-            <li data-filter="earth">Earth Tones</li>
-            <li data-filter="bright">Bright Series</li>
-        </ul>
+        <div class="filter-group">
+            <h4>Collection</h4>
+            <ul class="filter-list" data-filter-group="cat">
+                <li class="active" data-filter="all">All Items</li>
+                <li data-filter="core">Core Essentials</li>
+                <li data-filter="earth">Earth Tones</li>
+                <li data-filter="bright">Bright Series</li>
+            </ul>
+        </div>
 
-        <h4>Fit</h4>
-        <ul class="filter-list">
-            <li>Standard Fit</li>
-            <li>Oversized</li>
-        </ul>
+        <div class="filter-group">
+            <h4>Clothing Type</h4>
+            <ul class="filter-list" data-filter-group="type">
+                <li class="active" data-filter="all">All Types</li>
+                <li data-filter="tee">Performance Tees</li>
+                <li data-filter="tank">Tanks & Sleeveless</li>
+                <li data-filter="hoodie">Hoodies</li>
+            </ul>
+        </div>
+
+        <div class="filter-group">
+            <h4>Fit</h4>
+            <ul class="filter-list" data-filter-group="fit">
+                <li class="active" data-filter="all">All Fits</li>
+                <li data-filter="standard">Standard Fit</li>
+                <li data-filter="oversized">Oversized</li>
+            </ul>
+        </div>
+
+        <div class="filter-group">
+            <h4>Color</h4>
+            <div class="color-grid" id="color-filters">
+                <div class="color-dot active" data-filter="all" style="background: #fff; border: 1px dashed #000;" title="All"></div>
+                <div class="color-dot" data-filter="black" style="background: #000;" title="Black"></div>
+                <div class="color-dot" data-filter="white" style="background: #fff;" title="White"></div>
+                <div class="color-dot" data-filter="purple" style="background: #8f5aff;" title="Purple"></div>
+                <div class="color-dot" data-filter="blue" style="background: #0044ff;" title="Blue"></div>
+                <div class="color-dot" data-filter="green" style="background: #2d5a27;" title="Green"></div>
+                <div class="color-dot" data-filter="brown" style="background: #5c4033;" title="Brown"></div>
+            </div>
+        </div>
     </aside>
 
     <main>
         <div class="shop-controls">
-            <div id="item-count" style="font-size: 0.7rem; opacity: 0.5;">SHOWING: ALL PRODUCTS</div>
+            <div id="item-count" style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 1px;">SHOWING: ALL PRODUCTS</div>
             <select id="sort-dropdown">
                 <option value="popular">Most Popular</option>
-                <option value="newest">Newest Arrivals</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
             </select>
         </div>
 
         <div class="shop-grid" id="product-grid">
-            <a href="products/black-shirt.html" class="product-card" data-price="26.99" data-pop="1" data-cat="core">
-                <img src="images/Black Shirt Front.png"><div class="card-info"><h3>Black Performance Tee</h3><div class="price-tag">$26.99</div></div>
-            </a>
-            
-            <a href="products/white-shirt.html" class="product-card" data-price="26.99" data-pop="2" data-cat="core">
-                <img src="images/White Shirt Front.png"><div class="card-info"><h3>White Essential Tee</h3><div class="price-tag">$26.99</div></div>
+            <a href="products/black-shirt.html" class="product-card" 
+               data-price="26.99" data-pop="1" data-cat="core" data-type="tee" data-fit="standard" data-color="black">
+                <img src="images/Black Shirt Front.png">
+                <div class="card-info"><h3>Black Performance Tee</h3><div class="price-tag">$26.99</div></div>
             </a>
 
-            <a href="products/purple-shirt.html" class="product-card" data-price="29.99" data-pop="3" data-cat="bright">
-                <img src="images/Purple Shirt Front.png"><div class="card-info"><h3>Signature Purple Tee</h3><div class="price-tag">$29.99</div></div>
+            <a href="products/purple-shirt.html" class="product-card" 
+               data-price="29.99" data-pop="2" data-cat="bright" data-type="tee" data-fit="oversized" data-color="purple">
+                <img src="images/Purple Shirt Front.png">
+                <div class="card-info"><h3>Oversized Purple Tee</h3><div class="price-tag">$29.99</div></div>
             </a>
-
-            <a href="products/brown-shirt.html" class="product-card" data-price="26.99" data-pop="5" data-cat="earth">
-                <img src="images/Brown Shirt Front.png"><div class="card-info"><h3>Earth Brown Tee</h3><div class="price-tag">$26.99</div></div>
-            </a>
-
-            <a href="products/dark-blue-shirt.html" class="product-card" data-price="26.99" data-pop="4" data-cat="core">
-                <img src="images/Dark Blue Shirt Front.png"><div class="card-info"><h3>Deep Blue Tee</h3><div class="price-tag">$26.99</div></div>
-            </a>
-
-            <a href="products/orange-shirt.html" class="product-card" data-price="32.00" data-pop="10" data-cat="bright">
-                <img src="images/Orange Shirt Front.png"><div class="card-info"><h3>Flash Orange Tee</h3><div class="price-tag">$32.00</div></div>
-            </a>
-            
             </div>
     </main>
 </div>
+
+<style>
+    /* New Styles for Expanded Sidebar */
+    .filter-group { margin-bottom: 35px; }
+    
+    .color-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .color-dot {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: 0.2s;
+    }
+
+    .color-dot:hover { transform: scale(1.2); }
+    .color-dot.active { border-color: var(--accent); }
+
+    .filter-list li.active { color: var(--accent); font-weight: 800; }
+</style>
 
 <script>
     const grid = document.getElementById('product-grid');
     const cards = Array.from(grid.getElementsByClassName('product-card'));
     const sortDropdown = document.getElementById('sort-dropdown');
-    const filters = document.querySelectorAll('#collection-filters li');
+    
+    // Store active filters
+    let activeFilters = {
+        cat: 'all',
+        type: 'all',
+        fit: 'all',
+        color: 'all'
+    };
 
-    // SORTING LOGIC
+    function applyFilters() {
+        cards.forEach(card => {
+            const matchCat = activeFilters.cat === 'all' || card.dataset.cat === activeFilters.cat;
+            const matchType = activeFilters.type === 'all' || card.dataset.type === activeFilters.type;
+            const matchFit = activeFilters.fit === 'all' || card.dataset.fit === activeFilters.fit;
+            const matchColor = activeFilters.color === 'all' || card.dataset.color === activeFilters.color;
+
+            if (matchCat && matchType && matchFit && matchColor) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Handle List Filters
+    document.querySelectorAll('.filter-list li').forEach(li => {
+        li.addEventListener('click', function() {
+            const group = this.parentElement.dataset.filterGroup;
+            activeFilters[group] = this.dataset.filter;
+            
+            this.parentElement.querySelectorAll('li').forEach(item => item.classList.remove('active'));
+            this.classList.add('active');
+            applyFilters();
+        });
+    });
+
+    // Handle Color Dots
+    document.querySelectorAll('.color-dot').forEach(dot => {
+        dot.addEventListener('click', function() {
+            activeFilters.color = this.dataset.filter;
+            document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+            this.classList.add('active');
+            applyFilters();
+        });
+    });
+
+    // Sorting Logic
     sortDropdown.addEventListener('change', () => {
         const val = sortDropdown.value;
-        let sortedCards;
+        let sortedCards = [...cards];
 
         if (val === 'price-low') {
-            sortedCards = cards.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+            sortedCards.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
         } else if (val === 'price-high') {
-            sortedCards = cards.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+            sortedCards.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
         } else if (val === 'popular') {
-            sortedCards = cards.sort((a, b) => parseInt(a.dataset.pop) - parseInt(b.dataset.pop));
-        } else {
-            sortedCards = cards; // Default
+            sortedCards.sort((a, b) => parseInt(a.dataset.pop) - parseInt(b.dataset.pop));
         }
 
         grid.innerHTML = "";
         sortedCards.forEach(card => grid.appendChild(card));
     });
-
-    // FILTERING LOGIC
-    filters.forEach(filter => {
-        filter.addEventListener('click', () => {
-            // UI Toggle
-            filters.forEach(f => f.classList.remove('active'));
-            filter.classList.add('active');
-
-            const cat = filter.dataset.filter;
-            cards.forEach(card => {
-                if (cat === 'all' || card.dataset.cat === cat) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            document.getElementById('item-count').innerText = `SHOWING: ${cat.toUpperCase()}`;
-        });
-    });
 </script>
-
-</body>
-</html>
