@@ -9,7 +9,6 @@
 
 <body>
 
-<!-- HEADER (matches your new global header) -->
 <header class="site-header">
   <div class="header-left">
     <div class="logo">OBSKURA</div>
@@ -21,37 +20,54 @@
       <a href="shop.html">Shop</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
+      <a href="#" onclick="toggleCart(); return false;" class="nav-cart">
+        BAG (<span class="cart-count">0</span>)
+      </a>
     </nav>
 
-    <!-- MOBILE MENU BUTTON -->
     <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
   </div>
 </header>
 
-<!-- ABOUT PAGE CONTENT -->
 <section class="page" style="max-width: 800px; margin: 60px auto; text-align: center;">
   <h1 style="color:#8f5aff; text-transform:uppercase; letter-spacing:6px; margin-bottom:20px;">
     About OBSKURA
   </h1>
 
   <p style="opacity:0.8; margin-bottom:20px;">
-    OBSKURA is a gymwear brand built for athletes who train with purpose.
-    Our compression wear is engineered for performance, identity, and intensity.
+    OBSKURA is a gymwear brand built for athletes who train with purpose. 
+    Our compression wear is engineered for performance, identity, and intensity. 
     Minimal. Powerful. Unmistakable.
   </p>
 
   <p style="opacity:0.8;">
-    Every piece is designed with intention — clean lines, bold silhouettes,
-    and a dark aesthetic that reflects the mindset of those who push themselves
+    Every piece is designed with intention — clean lines, bold silhouettes, 
+    and a dark aesthetic that reflects the mindset of those who push themselves 
     beyond limits.
   </p>
 </section>
 
-<!-- MOBILE MENU SCRIPT -->
+<div class="cart-overlay" onclick="toggleCart()"></div>
+<div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+        <h2 style="letter-spacing: 2px;">YOUR BAG</h2>
+        <span class="close-cart" onclick="toggleCart()">✕</span>
+    </div>
+    <div id="cartItems" class="cart-items">
+        </div>
+    <div class="cart-footer">
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+            <span>SUBTOTAL</span>
+            <span id="cartSubtotal">$0.00</span>
+        </div>
+        <button id="checkoutBtn" class="btn" style="width:100%;">PROCEED TO CHECKOUT</button>
+    </div>
+</div>
+
+<script src="app.js"></script>
+
 <script>
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
@@ -60,16 +76,13 @@
     navLinks.classList.toggle('open');
     hamburger.classList.toggle('open');
   });
-</script>
 
-<!-- HEADER SHADOW ON SCROLL -->
-<script>
   window.addEventListener('scroll', () => {
     const header = document.querySelector('.site-header');
     if (window.scrollY > 10) {
-      header.classList.add('scrolled');
+      header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
     } else {
-      header.classList.remove('scrolled');
+      header.style.boxShadow = 'none';
     }
   });
 </script>
