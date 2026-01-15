@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBSKURA | Stealth Compression Tee</title>
+    <title>OBSKURA | Beige Performance Tee</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -18,383 +18,91 @@
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg-black);
-            color: var(--text-light);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-black); color: var(--text-light); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
 
         /* --- Header --- */
         .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--header-height);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height);
+            display: flex; justify-content: space-between; align-items: center; padding: 0 5%;
+            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(12px); z-index: 1000;
             border-bottom: 1px solid var(--border-color);
         }
-
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            letter-spacing: 4px;
-            color: var(--text-light);
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 400;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-purple);
-        }
+        .logo { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.5rem; letter-spacing: 4px; color: var(--text-light); }
+        .nav-links a { color: var(--text-light); text-decoration: none; margin-left: 30px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--accent-purple); }
 
         /* --- Layout --- */
         .main-container {
-            max-width: 1300px;
-            margin: calc(var(--header-height) + 40px) auto 80px;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
+            max-width: 1200px; margin: calc(var(--header-height) + 60px) auto 100px;
+            padding: 0 20px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px;
         }
 
-        /* --- Left Column: Images --- */
-        .product-gallery {
-            position: sticky;
-            top: calc(var(--header-height) + 40px);
-            height: fit-content;
-        }
-
+        /* --- Gallery --- */
+        .product-gallery { position: sticky; top: calc(var(--header-height) + 60px); height: fit-content; }
         .image-container {
-            position: relative;
-            background: var(--surface-dark);
-            border-radius: 4px;
-            overflow: hidden;
-            aspect-ratio: 4 / 5;
+            position: relative; background: var(--surface-dark); border-radius: 2px;
+            overflow: hidden; aspect-ratio: 4 / 5;
         }
-
         .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            width: 100%; height: 100%; object-fit: cover; position: absolute;
+            opacity: 0; transition: opacity 0.4s ease-in-out;
         }
-
-        .image-container img.active {
-            opacity: 1;
-        }
-
-        .gallery-controls {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            justify-content: center;
-        }
-
+        .image-container img.active { opacity: 1; }
+        .gallery-controls { display: flex; gap: 12px; margin-top: 20px; justify-content: center; }
         .view-btn {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-light);
-            padding: 10px 20px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            transition: var(--transition);
+            background: transparent; border: 1px solid var(--border-color); color: var(--text-light);
+            padding: 12px 24px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem;
+            letter-spacing: 2px; transition: var(--transition);
         }
+        .view-btn.active { border-color: var(--accent-purple); background: rgba(139, 92, 246, 0.1); }
 
-        .view-btn.active {
-            border-color: var(--accent-purple);
-            background: rgba(139, 92, 246, 0.1);
-        }
+        /* --- Product Info --- */
+        .product-info h1 { font-family: 'Montserrat', sans-serif; font-size: 2.8rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: -1px; }
+        .price { font-size: 1.8rem; color: var(--accent-purple); font-weight: 600; margin-bottom: 40px; }
+        
+        .selection-group { margin-bottom: 30px; }
+        .selection-label { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-gray); }
+        .size-trigger { color: var(--accent-purple); cursor: pointer; text-decoration: underline; font-weight: 600; }
+        .size-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+        .size-btn { background: var(--surface-dark); border: 1px solid var(--border-color); color: var(--text-light); padding: 15px; cursor: pointer; transition: var(--transition); font-weight: 600; }
+        .size-btn:hover { border-color: var(--text-gray); }
+        .size-btn.selected { background: var(--accent-purple); border-color: var(--accent-purple); color: white; }
 
-        /* --- Right Column: Details --- */
-        .product-info h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .price {
-            font-size: 1.5rem;
-            color: var(--accent-purple);
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-
-        .model-specs {
-            background: var(--surface-dark);
-            padding: 15px;
-            border-left: 3px solid var(--accent-purple);
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-            color: var(--text-gray);
-        }
-
-        /* Selection Groups */
-        .selection-group {
-            margin-bottom: 25px;
-        }
-
-        .selection-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-gray);
-        }
-
-        .size-trigger {
-            color: var(--accent-purple);
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        .size-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-        }
-
-        .size-btn {
-            background: var(--surface-dark);
-            border: 1px solid var(--border-color);
-            color: var(--text-light);
-            padding: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .size-btn:hover:not(:disabled) {
-            border-color: var(--accent-purple);
-        }
-
-        .size-btn.selected {
-            background: var(--accent-purple);
-            border-color: var(--accent-purple);
-        }
-
-        .size-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            text-decoration: line-through;
-        }
-
-        /* Action Buttons */
-        .atc-btn {
-            width: 100%;
-            padding: 20px;
-            background: var(--accent-purple);
-            color: white;
-            border: none;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            margin-bottom: 15px;
-            transition: var(--transition);
-        }
-
-        .atc-btn:hover {
-            background: var(--accent-purple-hover);
-            transform: translateY(-2px);
-        }
+        .atc-btn { width: 100%; padding: 22px; background: var(--accent-purple); color: white; border: none; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: var(--transition); margin-bottom: 20px; }
+        .atc-btn:hover { background: var(--accent-purple-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2); }
 
         /* Accordions */
-        .accordion {
-            border-top: 1px solid var(--border-color);
-            margin-top: 40px;
-        }
-
-        .accordion-item {
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .accordion-header {
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            padding-bottom: 0;
-        }
-
-        .accordion-item.active .accordion-content {
-            max-height: 200px;
-            padding-bottom: 20px;
-        }
+        .accordion { border-top: 1px solid var(--border-color); margin-top: 50px; }
+        .accordion-item { border-bottom: 1px solid var(--border-color); }
+        .accordion-header { padding: 22px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-gray); font-size: 0.95rem; }
+        .accordion-item.active .accordion-content { max-height: 200px; padding-bottom: 25px; }
 
         /* Trust Badges */
-        .trust-badges {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            padding: 20px 0;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .badge-item {
-            text-align: center;
-            font-size: 0.65rem;
-            color: var(--text-gray);
-            text-transform: uppercase;
-        }
-
-        .badge-icon {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--accent-purple);
-            font-size: 1.2rem;
-        }
-
-        /* Recommended Section */
-        .recommendations {
-            max-width: 1300px;
-            margin: 80px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            text-align: center;
-            letter-spacing: 3px;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .rec-card {
-            background: var(--surface-dark);
-            padding-bottom: 20px;
-            transition: var(--transition);
-        }
-
-        .rec-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .rec-img {
-            width: 100%;
-            aspect-ratio: 4/5;
-            background: #1a1a1a;
-            margin-bottom: 15px;
-        }
-
-        .rec-info {
-            padding: 0 15px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
+        .trust-badges { display: flex; justify-content: space-between; margin-top: 50px; padding: 25px 0; border-top: 1px solid var(--border-color); }
+        .badge-item { text-align: center; font-size: 0.65rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px; }
+        .badge-icon { display: block; margin-bottom: 10px; color: var(--accent-purple); font-size: 1.4rem; }
 
         /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: var(--surface-dark); padding: 50px; width: 95%; max-width: 600px; position: relative; border: 1px solid var(--border-color); border-radius: 4px; }
+        .close-modal { position: absolute; top: 25px; right: 25px; cursor: pointer; color: var(--accent-purple); font-weight: 800; }
+        table { width: 100%; border-collapse: collapse; margin-top: 25px; color: var(--text-light); }
+        th, td { padding: 15px; border: 1px solid var(--border-color); text-align: center; font-size: 0.9rem; }
+        th { background: rgba(255,255,255,0.03); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
 
-        .modal-content {
-            background: var(--surface-dark);
-            padding: 40px;
-            width: 90%;
-            max-width: 600px;
-            position: relative;
-            border: 1px solid var(--border-color);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            color: var(--accent-purple);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-        }
-
-        /* Responsive */
         @media (max-width: 968px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-            .product-gallery {
-                position: relative;
-                top: 0;
-            }
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .main-container { grid-template-columns: 1fr; gap: 40px; margin-top: var(--header-height); }
+            .product-info h1 { font-size: 2.2rem; }
+            .product-gallery { position: relative; top: 0; }
         }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <div class="header-left">
-            <div class="logo">OBSKURA</div>
-        </div>
+        <div class="header-left"><div class="logo">OBSKURA</div></div>
         <div class="header-right">
             <nav class="nav-links">
                 <a href="../index.html">Home</a>
@@ -408,8 +116,8 @@
     <main class="main-container">
         <section class="product-gallery">
             <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1581009146145-b5ef03a7403f?auto=format&fit=crop&q=80&w=1000" alt="Front View" class="active" id="img-front">
-                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1000" alt="Back View" id="img-back">
+                <img src="Beige Shirt Front.png" alt="Front View" class="active" id="img-front">
+                <img src="Beige Shirt Back.png" alt="Back View" id="img-back">
             </div>
             <div class="gallery-controls">
                 <button class="view-btn active" onclick="switchImage('front')">Front</button>
@@ -418,179 +126,99 @@
         </section>
 
         <section class="product-info">
-            <p style="color: var(--accent-purple); letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 5px;">NEW ARRIVAL</p>
-            <h1>Onyx Compression Tee</h1>
-            <p class="price">$52.00</p>
-
-            <div class="model-info">
-                <div class="model-specs">
-                    <strong>MODEL INFO:</strong> Height: 6'1" | Weight: 195 lbs | Wearing Size: Large
-                </div>
-            </div>
+            <p style="color: var(--accent-purple); letter-spacing: 3px; font-size: 0.7rem; margin-bottom: 8px; font-weight: 800;">LIMITED EDITION</p>
+            <h1>Beige Performance Tee</h1>
+            <p class="price">$26.00</p>
 
             <div class="selection-group">
-                <div class="selection-label">
-                    <span>Select Size</span>
-                    <span class="size-trigger" onclick="toggleModal(true)">Size Guide</span>
-                </div>
+                <div class="selection-label"><span>Select Size</span> <span class="size-trigger" onclick="toggleModal(true)">Size Guide</span></div>
                 <div class="size-grid">
                     <button class="size-btn">S</button>
                     <button class="size-btn">M</button>
                     <button class="size-btn selected">L</button>
                     <button class="size-btn">XL</button>
-                    <button class="size-btn" disabled>XXL</button>
+                    <button class="size-btn">XXL</button>
                 </div>
             </div>
 
-            <button class="atc-btn">Add To Cart — $52.00</button>
-            <p style="text-align: center; font-size: 0.75rem; color: var(--text-gray);">4 interest-free payments of $13.00 with Klarna.</p>
+            <button class="atc-btn">Add To Cart — $26.00</button>
+            <p style="text-align: center; font-size: 0.75rem; color: var(--text-gray); letter-spacing: 0.5px;">4 interest-free payments of $6.50 with Klarna.</p>
 
             <div class="accordion">
                 <div class="accordion-item active">
                     <div class="accordion-header">Description <span>+</span></div>
-                    <div class="accordion-content">
-                        Engineered for the elite. The Onyx Compression Tee features ultra-lightweight, moisture-wicking fabric designed to support your muscles while providing maximum breathability. 
-                    </div>
+                    <div class="accordion-content">High-performance athletic fabric designed for breathable comfort. Features a minimal aesthetic with reinforced stitching for high-intensity training sessions.</div>
                 </div>
                 <div class="accordion-item">
                     <div class="accordion-header">Care Instructions <span>+</span></div>
-                    <div class="accordion-content">
-                        Machine wash cold with like colors. Tumble dry low. Do not iron. Do not dry clean.
-                    </div>
+                    <div class="accordion-content">Machine wash cold. Do not bleach. Tumble dry low. Avoid ironing directly on brand markings to preserve longevity.</div>
                 </div>
                 <div class="accordion-item">
                     <div class="accordion-header">Shipping & Returns <span>+</span></div>
-                    <div class="accordion-content">
-                        Free standard shipping on orders over $100. Returns accepted within 30 days of purchase in original condition.
-                    </div>
+                    <div class="accordion-content">Orders ship within 24-48 hours. We offer a 30-day hassle-free return policy for all unworn apparel.</div>
                 </div>
             </div>
 
             <div class="trust-badges">
-                <div class="badge-item">
-                    <span class="badge-icon">⚡</span>
-                    Fast Shipping
-                </div>
-                <div class="badge-item">
-                    <span class="badge-icon">🛡️</span>
-                    Secure Checkout
-                </div>
-                <div class="badge-item">
-                    <span class="badge-icon">🔄</span>
-                    Easy Returns
-                </div>
+                <div class="badge-item"><span class="badge-icon">⚡</span>Fast Shipping</div>
+                <div class="badge-item"><span class="badge-icon">🛡️</span>Secure Pay</div>
+                <div class="badge-item"><span class="badge-icon">🔄</span>Easy Returns</div>
             </div>
         </section>
     </main>
 
-    <section class="recommendations">
-        <h2 class="section-title">Complete The Kit</h2>
-        <div class="product-grid">
-            <div class="rec-card">
-                <div class="rec-img"></div>
-                <div class="rec-info">
-                    <p>Stealth Shorts</p>
-                    <p style="color: var(--text-gray)">$45.00</p>
-                </div>
-            </div>
-            <div class="rec-card">
-                <div class="rec-img"></div>
-                <div class="rec-info">
-                    <p>Ghost Joggers</p>
-                    <p style="color: var(--text-gray)">$68.00</p>
-                </div>
-            </div>
-            <div class="rec-card">
-                <div class="rec-img"></div>
-                <div class="rec-info">
-                    <p>Lifting Belt 2.0</p>
-                    <p style="color: var(--text-gray)">$85.00</p>
-                </div>
-            </div>
-            <div class="rec-card">
-                <div class="rec-img"></div>
-                <div class="rec-info">
-                    <p>Obskura Shaker</p>
-                    <p style="color: var(--text-gray)">$18.00</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <div class="modal" id="sizeModal">
         <div class="modal-content">
             <span class="close-modal" onclick="toggleModal(false)">CLOSE ✕</span>
-            <h2 style="text-transform: uppercase; letter-spacing: 2px;">Size Chart</h2>
+            <h2 style="letter-spacing: 3px; text-transform: uppercase; font-family: 'Montserrat';">Size Guide</h2>
             <table>
                 <thead>
-                    <tr>
-                        <th>Size</th>
-                        <th>Chest (in)</th>
-                        <th>Waist (in)</th>
-                    </tr>
+                    <tr><th>Size</th><th>Chest (in)</th><th>Length (in)</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>S</td><td>36-38</td><td>29-31</td></tr>
-                    <tr><td>M</td><td>39-41</td><td>32-34</td></tr>
-                    <tr><td>L</td><td>42-44</td><td>35-37</td></tr>
-                    <tr><td>XL</td><td>45-47</td><td>38-40</td></tr>
+                    <tr><td>S</td><td>36-38</td><td>28</td></tr>
+                    <tr><td>M</td><td>39-41</td><td>29</td></tr>
+                    <tr><td>L</td><td>42-44</td><td>30</td></tr>
+                    <tr><td>XL</td><td>45-47</td><td>31</td></tr>
+                    <tr><td>XXL</td><td>48-50</td><td>32</td></tr>
                 </tbody>
             </table>
         </div>
     </div>
 
     <script>
-        // Image Switcher
+        // Image Switcher Logic
         function switchImage(view) {
             const front = document.getElementById('img-front');
             const back = document.getElementById('img-back');
             const btns = document.querySelectorAll('.view-btn');
-
-            btns.forEach(btn => btn.classList.remove('active'));
-
-            if (view === 'front') {
-                front.classList.add('active');
-                back.classList.remove('active');
-                btns[0].classList.add('active');
+            btns.forEach(b => b.classList.remove('active'));
+            if(view === 'front') {
+                front.classList.add('active'); back.classList.remove('active'); btns[0].classList.add('active');
             } else {
-                back.classList.add('active');
-                front.classList.remove('active');
-                btns[1].classList.add('active');
+                back.classList.add('active'); front.classList.remove('active'); btns[1].classList.add('active');
             }
         }
 
-        // Size Selection
-        const sizeBtns = document.querySelectorAll('.size-btn');
-        sizeBtns.forEach(btn => {
+        // Accordion Toggle
+        document.querySelectorAll('.accordion-header').forEach(h => {
+            h.addEventListener('click', () => h.parentElement.classList.toggle('active'));
+        });
+
+        // Size Selection Toggle
+        document.querySelectorAll('.size-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                if (!btn.disabled) {
-                    sizeBtns.forEach(b => b.classList.remove('selected'));
-                    btn.classList.add('selected');
-                }
+                document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
             });
         });
 
-        // Accordion Logic
-        const accHeaders = document.querySelectorAll('.accordion-header');
-        accHeaders.forEach(header => {
-            header.addEventListener('click', () => {
-                const item = header.parentElement;
-                item.classList.toggle('active');
-            });
-        });
-
-        // Modal Logic
-        function toggleModal(show) {
-            const modal = document.getElementById('sizeModal');
-            modal.style.display = show ? 'flex' : 'none';
-        }
-
-        // Close modal on outside click
+        // Modal Functionality
+        function toggleModal(s) { document.getElementById('sizeModal').style.display = s ? 'flex' : 'none'; }
+        
         window.onclick = function(event) {
             const modal = document.getElementById('sizeModal');
-            if (event.target == modal) {
-                toggleModal(false);
-            }
+            if (event.target == modal) toggleModal(false);
         }
     </script>
 </body>
