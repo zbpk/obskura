@@ -198,5 +198,23 @@
   }
 </script>
 
+  window.addEventListener('load', () => {
+  const pendingItem = localStorage.getItem('pendingCartItem');
+  if (pendingItem) {
+    const item = JSON.parse(pendingItem);
+    addToCart(item.name, item.price, item.image);
+    localStorage.removeItem('pendingCartItem'); // Clear it so it doesn't duplicate on refresh
+    if (!document.getElementById('cartSidebar').classList.contains('open')) {
+      toggleCart();
+    }
+  }
+  updateCartUI(); // Initial render of existing cart
+});
+
+function addToCart(name, price, image) {
+  cart.push({ name, price, image });
+  updateCartUI();
+}
+  
 </body>
 </html>
