@@ -1,245 +1,33 @@
-/* === RESET === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  background: #050507;
-  color: #f5f5f5;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-}
-
-/* === GLOBAL PAGE WRAPPER === */
-.page {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: clamp(60px, 8vw, 100px) clamp(16px, 5vw, 60px);
-}
-
-/* ========================================================= */
-/* ======================= HEADER =========================== */
-/* ========================================================= */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(12px);
-  background: rgba(5, 5, 7, 0.9);
-  border-bottom: 1px solid rgba(80, 80, 80, 0.45);
-  padding: 16px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 20px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #fff;
-}
-
-.nav-links {
-  display: flex;
-  gap: 24px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #c2c2c2;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 14px;
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-  transition: 0.2s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: #fff;
-  border-color: #8a5cff;
-}
-
-/* Hamburger (mobile) */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.hamburger span {
-  width: 26px;
-  height: 3px;
-  background: #fff;
-  transition: 0.3s ease;
-}
-
-.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-@media (max-width: 700px) {
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 0;
+.top-banner {
+    position: relative;
     width: 100%;
-    background: #000;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 0;
-    display: none;
-  }
-  .nav-links.open { display: flex; }
-  .hamburger { display: flex; }
+    height: 100vh; /* This makes the banner take up the full screen height */
+    overflow: hidden;
+    background-color: #000;
 }
 
-/* ========================================================= */
-/* ======================= GLOBAL CART ===================== */
-/* ========================================================= */
-
-/* Floating Cart Icon */
-.cart-trigger {
-    position: fixed; bottom: 30px; right: 30px;
-    width: 65px; height: 65px; background: #8f5aff;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; z-index: 2000; box-shadow: 0 10px 30px rgba(143, 90, 255, 0.4);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.cart-trigger:hover { transform: scale(1.1); }
-
-.cart-count {
-    position: absolute; top: 10px; right: 10px; background: white; color: black;
-    font-size: 0.7rem; font-weight: 800; width: 20px; height: 20px;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+.banner-image {
+    width: 100%;
+    height: 100%;
+    /* Use your specific filename here */
+    background-image: url('images/backdrop-1.png'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Creates the parallax scrolling effect */
+    filter: brightness(0.5); /* Dims the image so the logo pops */
 }
 
-/* Sidebar Drawer */
-.cart-sidebar {
-    position: fixed; top: 0; right: -400px; width: 400px; height: 100%;
-    background: #141414; border-left: 1px solid #27272a;
-    z-index: 3000; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex; flex-direction: column; color: white;
-}
-.cart-sidebar.open { right: 0; }
-
-.cart-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8); z-index: 2500; opacity: 0; 
-    pointer-events: none; transition: 0.3s;
-}
-.cart-overlay.open { opacity: 1; pointer-events: auto; }
-
-/* Animation for adding items */
-@keyframes cartBounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-}
-.cart-bounce { animation: cartBounce 0.4s ease-in-out; }
-
-@media (max-width: 480px) {
-    .cart-sidebar { width: 100%; right: -100%; }
-    .cart-sidebar.open { right: 0; }
-}
-
-/* ========================================================= */
-/* ======================= HERO & SECTIONS ================= */
-/* ========================================================= */
-
-.hero {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 120px 24px 72px;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: clamp(40px, 8vw, 80px);
-  letter-spacing: 12px;
-  text-transform: uppercase;
-  color: #8f5aff;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: clamp(16px, 3vw, 22px);
-  opacity: 0.75;
-  max-width: 700px;
-  margin: 0 auto 30px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 28px;
-  border-radius: 999px;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  border: 1px solid #8a5cff;
-  background: #8a5cff;
-  color: #050507;
-  text-decoration: none;
-  transition: 0.18s ease;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: transparent;
-  color: #fff;
-  transform: translateY(-1px);
-}
-
-/* ========================================================= */
-/* ======================= PRODUCT GRID ==================== */
-/* ========================================================= */
-
-.products {
-  max-width: 1100px;
-  margin: 0 auto 80px;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 24px;
-}
-
-.product {
-  text-decoration: none;
-  color: inherit;
-  border-radius: 14px;
-  background: #0a0a0f;
-  border: 1px solid #181818;
-  padding: 14px;
-  transition: 0.25s ease;
-  position: relative;
-}
-
-.product img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #242424;
-}
-
-.product:hover {
-  transform: translateY(-6px);
-  border-color: #8f5aff;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.55);
-}
-
-.badge { 
-  position: absolute; top: 10px; left: 10px; 
-  background: #8f5aff; color: white; font-size: 0.6rem; 
-  padding: 4px 10px; font-weight: 800; text-transform: uppercase; 
-  border-radius: 4px;
+.banner-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(3rem, 10vw, 6rem); /* Responsive font size */
+    letter-spacing: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 0 0 30px rgba(143, 90, 255, 0.4); /* Subtle purple glow */
+    pointer-events: none; /* Allows clicks to pass through to the banner if needed */
 }
