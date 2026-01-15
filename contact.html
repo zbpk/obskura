@@ -19,7 +19,10 @@
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
       <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="#" onclick="toggleCart(); return false;" class="nav-cart">
+        BAG (<span class="cart-count">0</span>)
+      </a>
     </nav>
 
     <div class="hamburger">
@@ -30,7 +33,7 @@
   </div>
 </header>
 
-<section class="page" style="max-width: 800px; margin: 60px auto; text-align: center;">
+<section class="page" style="max-width: 800px; margin: 60px auto; text-align: center; padding-top: 100px;">
   <h1 style="color:#8f5aff; text-transform:uppercase; letter-spacing:6px; margin-bottom:20px;">
     Contact Us
   </h1>
@@ -69,14 +72,18 @@
         <h2 style="font-size:0.8rem; letter-spacing:3px;">YOUR BAG</h2>
         <span onclick="toggleCart()" style="cursor:pointer; font-size:0.8rem; opacity:0.5;">CLOSE ✕</span>
     </div>
-    <div id="cartItems" style="padding: 30px; flex-grow:1; overflow-y:auto;">
-        </div>
+    
+    <div id="cartItems" style="padding: 30px; flex-grow:1; overflow-y:auto;"></div>
+    
     <div style="padding:30px; border-top:1px solid #222;">
         <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
             <span style="font-size:0.7rem; letter-spacing:1px; opacity:0.5;">SUBTOTAL</span>
             <span id="cartSubtotal" style="font-weight:600; color:#8f5aff;">$0.00</span>
         </div>
-        <button id="checkoutBtn" class="btn" style="width:100%; padding:15px; border-radius:4px;">PROCEED TO CHECKOUT</button>
+        <button onclick="location.href='https://zbpk.github.io/obskura/checkout.html'" 
+                style="width:100%; padding:15px; background:#8f5aff; color:black; border:none; font-weight:800; letter-spacing:2px; cursor:pointer; text-transform:uppercase; border-radius:4px;">
+            PROCEED TO CHECKOUT
+        </button>
     </div>
 </div>
 
