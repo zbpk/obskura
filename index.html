@@ -1,112 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBSKURA | Official Store</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --accent: #8f5aff;
-            --bg: #000000;
-            --surface: #0d0d0d;
-        }
-        body { background: var(--bg); color: #fff; margin: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
-        
-        /* Sticky Navigation */
-        .site-header {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
-            border-bottom: 1px solid #1a1a1a; box-sizing: border-box;
-        }
+<section id="home" class="mega-hero">
+    <div class="hero-backdrop">
+        <iframe src="backdrop-1.html" frameborder="0" style="width:100%; height:100%; border:none;"></iframe>
+        <div class="overlay-fade"></div>
+    </div>
 
-        /* Hero Section */
-        .hero {
-            height: 90vh; display: flex; align-items: flex-end; padding: 0 5% 100px;
-            background: linear-gradient(to top, #000, transparent), url('images/hero-bg.jpg') center/cover no-repeat;
-        }
-        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(3rem, 8vw, 6rem); line-height: 0.9; margin: 0; text-transform: uppercase; }
-
-        /* Product Grid (The Gymshark Look) */
-        .grid-title { padding: 80px 5% 20px; font-family: 'Montserrat', sans-serif; font-size: 1.5rem; letter-spacing: 2px; }
-        .grid-container {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px; padding: 0 5% 80px; max-width: 1600px; margin: 0 auto;
-        }
-        .product-card { text-decoration: none; color: inherit; background: var(--surface); border: 1px solid #111; transition: 0.3s; }
-        .product-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .product-card img { width: 100%; height: auto; display: block; }
-        .card-info { padding: 20px; text-align: center; }
-        .card-info h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; opacity: 0.7; }
-        .card-info .price { font-weight: 800; color: var(--accent); margin-top: 10px; font-size: 1.1rem; }
-
-        /* Unified About & Contact */
-        .content-section { padding: 100px 5%; border-top: 1px solid #1a1a1a; }
-        .contact-form { max-width: 600px; display: grid; gap: 15px; margin-top: 30px; }
-        input, textarea { background: #111; border: 1px solid #222; padding: 15px; color: #fff; font-family: inherit; width: 100%; box-sizing: border-box; }
-        input:focus { outline: none; border-color: var(--accent); }
-        .btn-black { background: #fff; color: #000; padding: 15px 40px; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; }
-        .btn-black:hover { background: var(--accent); color: #fff; }
-
-        @media (max-width: 768px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
-    </style>
-</head>
-<body>
-
-<header class="site-header">
-    <div style="font-weight:900; letter-spacing:4px; font-size: 1.2rem;">OBSKURA</div>
-    <nav>
-        <a href="#shop" style="color:#fff; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">SHOP</a>
-        <a href="#about" style="color:#fff; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">ABOUT</a>
-        <a href="#contact" style="color:#fff; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">CONTACT</a>
-    </nav>
-</header>
-
-<section class="hero">
-    <div>
-        <h1>UNSEEN<br>UNSTOPPABLE</h1>
-        <a href="#shop" class="btn-black" style="margin-top: 30px;">Shop Collection</a>
+    <div class="hero-title-container">
+        <h1 class="glitch-logo">OBSKURA</h1>
+        <p class="hero-subtitle">TRAIN IN THE SHADOWS</p>
+        <a href="#shop" class="btn-main">SHOP COLLECTION</a>
     </div>
 </section>
 
-<div id="shop" class="grid-title">CORE COLLECTION</div>
-<div class="grid-container">
-    <a href="products/black-shirt.html" class="product-card"><img src="images/Black Shirt Front.png"><div class="card-info"><h3>Black Performance Tee</h3><div class="price">$26.99</div></div></a>
-    <a href="products/white-shirt.html" class="product-card"><img src="images/White Shirt Front.png"><div class="card-info"><h3>White Essential Tee</h3><div class="price">$26.99</div></div></a>
-    <a href="products/purple-shirt.html" class="product-card"><img src="images/Purple Shirt Front.png"><div class="card-info"><h3>Purple Signature Tee</h3><div class="price">$26.99</div></div></a>
-    <a href="products/dark-grey-shirt.html" class="product-card"><img src="images/Dark Grey Shirt Front.png"><div class="card-info"><h3>Slate Grey Tee</h3><div class="price">$26.99</div></div></a>
-    
-    <a href="products/beige-shirt.html" class="product-card"><img src="images/Beige Shirt Front.png"><div class="card-info"><h3>Beige Sand Tee</h3><div class="price">$26.99</div></div></a>
-    <a href="products/brown-shirt.html" class="product-card"><img src="images/Brown Shirt Front.png"><div class="card-info"><h3>Earth Brown Tee</h3><div class="price">$26.99</div></div></a>
-    <a href="products/dark-blue-shirt.html" class="product-card"><img src="images/Dark Blue Shirt Front.png"><div class="card-info"><h3>Deep Blue Tee</h3><div class="price">$26.99</div></div></a>
-    <a href="products/dark-green-shirt.html" class="product-card"><img src="images/Dark Green Shirt Front.png"><div class="card-info"><h3>Forest Green Tee</h3><div class="price">$26.99</div></div></a>
-</div>
+<style>
+    /* Mega Hero Styles */
+    .mega-hero {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: #000;
+    }
 
-<section id="about" class="content-section">
-    <h2 style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">THE OBSKURA WAY</h2>
-    <p style="max-width: 700px; line-height: 1.8; opacity: 0.6; font-size: 1.1rem;">
-        Gear engineered for the ones who don’t need the spotlight. Built for silence. Built for obsession. Built for the underground. We move in silence so our results can speak.
-    </p>
-</section>
+    .hero-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
 
-<section id="contact" class="content-section" style="background: #050505;">
-    <h2 style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">SUPPORT</h2>
-    <form class="contact-form">
-        <input type="text" placeholder="Your Name">
-        <input type="email" placeholder="Email Address">
-        <textarea rows="5" placeholder="Message"></textarea>
-        <button type="submit" class="btn-black">Send Message</button>
-    </form>
-</section>
+    .overlay-fade {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%; /* Fades the bottom half into the shop */
+        background: linear-gradient(to top, #000, transparent);
+        z-index: 2;
+    }
 
-<footer>
-    <div style="padding: 40px 5%; border-top: 1px solid #1a1a1a; font-size: 0.7rem; opacity: 0.4; text-align: center; letter-spacing: 2px;">
-        © 2026 OBSKURA CLOTHING CO. ALL RIGHTS RESERVED.
-    </div>
-</footer>
+    .hero-title-container {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+    }
 
-<script src="app.js"></script>
-</body>
-</html>
+    .glitch-logo {
+        font-family: 'Montserrat', sans-serif;
+        font-size: clamp(4rem, 15vw, 12rem); /* Makes it HUGE */
+        font-weight: 900;
+        letter-spacing: 20px;
+        margin: 0;
+        color: #fff;
+        text-transform: uppercase;
+        line-height: 1;
+        /* Slight outer glow for that high-end look */
+        text-shadow: 0 0 30px rgba(143, 90, 255, 0.3); 
+    }
+
+    .hero-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 10px;
+        color: var(--accent);
+        margin-top: 20px;
+        font-weight: 800;
+    }
+
+    .btn-main {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 15px 40px;
+        background: #fff;
+        color: #000;
+        text-decoration: none;
+        font-weight: 800;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        transition: 0.3s;
+    }
+
+    .btn-main:hover {
+        background: var(--accent);
+        color: #fff;
+        transform: scale(1.05);
+    }
+
+    /* Hide the default header until the user scrolls past the hero */
+    .site-header {
+        background: rgba(0,0,0,0.5); /* Make it more transparent to show off the logo */
+    }
+</style>
