@@ -1,7 +1,36 @@
+/* --- GLOBAL VARIABLES --- */
+:root {
+    --bg-black: #0a0a0a;
+    --surface-dark: #141414;
+    --accent-purple: #8b5cf6;
+    --accent-glow: rgba(139, 92, 246, 0.3);
+    --text-gray: #a1a1aa;
+    --text-light: #f4f4f5;
+    --border-color: #27272a;
+    --header-height: 70px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- TOP BANNER (HERO) --- */
 .top-banner {
     position: relative;
     width: 100%;
-    height: 100vh; /* This makes the banner take up the full screen height */
+    height: 100vh;
     overflow: hidden;
     background-color: #000;
 }
@@ -9,12 +38,12 @@
 .banner-image {
     width: 100%;
     height: 100%;
-    /* Use your specific filename here */
-    background-image: url('images/backdrop-1.png'); 
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)), 
+                      url('images/backdrop-1.png'); 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Creates the parallax scrolling effect */
-    filter: brightness(0.5); /* Dims the image so the logo pops */
+    background-attachment: fixed; /* Parallax effect */
+    filter: brightness(0.6);
 }
 
 .banner-logo {
@@ -24,10 +53,204 @@
     transform: translate(-50%, -50%);
     color: white;
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(3rem, 10vw, 6rem); /* Responsive font size */
-    letter-spacing: 20px;
+    font-size: clamp(3rem, 10vw, 6rem);
+    letter-spacing: clamp(10px, 3vw, 25px);
     font-weight: 800;
     text-transform: uppercase;
-    text-shadow: 0 0 30px rgba(143, 90, 255, 0.4); /* Subtle purple glow */
-    pointer-events: none; /* Allows clicks to pass through to the banner if needed */
+    text-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+    z-index: 2;
+}
+
+/* --- HEADER --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.site-header.scrolled {
+    background: rgba(10, 10, 10, 0.95);
+    height: 60px;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent-purple);
+}
+
+/* --- PRODUCT GRIDS --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 80px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.product {
+    text-decoration: none;
+    color: inherit;
+    background: var(--surface-dark);
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-purple);
+    box-shadow: 0 20px 40px var(--accent-glow);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.product h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.price {
+    color: var(--accent-purple);
+    font-weight: 700;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--accent-purple);
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: #7c3aed;
+    transform: scale(1.05);
+}
+
+/* --- CART SIDEBAR --- */
+.cart-sidebar {
+    position: fixed;
+    right: -450px;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    background: #0c0c0c;
+    border-left: 1px solid var(--border-color);
+    z-index: 2000;
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-sidebar.open {
+    right: 0;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1999;
+    transition: 0.3s;
+}
+
+.cart-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-trigger {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--accent-purple);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: white;
+    color: black;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: 10px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .banner-image {
+        background-attachment: scroll; /* Disabled on mobile for performance */
+    }
+    .cart-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
