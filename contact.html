@@ -9,7 +9,6 @@
 
 <body>
 
-<!-- HEADER (global OBSKURA header) -->
 <header class="site-header">
   <div class="header-left">
     <div class="logo">OBSKURA</div>
@@ -23,7 +22,6 @@
       <a href="contact.html">Contact</a>
     </nav>
 
-    <!-- MOBILE MENU BUTTON -->
     <div class="hamburger">
       <span></span>
       <span></span>
@@ -32,46 +30,68 @@
   </div>
 </header>
 
-<!-- CONTACT PAGE CONTENT -->
 <section class="page" style="max-width: 800px; margin: 60px auto; text-align: center;">
   <h1 style="color:#8f5aff; text-transform:uppercase; letter-spacing:6px; margin-bottom:20px;">
     Contact Us
   </h1>
 
-  <p style="opacity:0.8; margin-bottom:30px;">
-    Have questions about OBSKURA? Reach out below.
+  <p style="opacity:0.8; margin-bottom:30px; font-size: 0.9rem; letter-spacing: 1px;">
+    HAVE QUESTIONS ABOUT YOUR ORDER OR THE COLLECTION? REACH OUT BELOW.
   </p>
 
-  <!-- WORKING EMAIL FORM -->
   <form class="contact-form"
-        action="https://formsubmit.co/obskura.noreply@gmail.com"
+        action="https://formsubmit.co/your-email@email.com" 
         method="POST"
-        style="display:flex; flex-direction:column; gap:20px; margin-top:20px;">
+        style="display:flex; flex-direction:column; gap:15px; max-width:500px; margin:0 auto;">
+    
+    <input type="text" name="_captcha" value="false" style="display:none;">
+    <input type="hidden" name="_template" value="table">
+    
+    <input type="text" name="name" placeholder="YOUR NAME" required
+           style="padding:16px; background:#111; border:1px solid #222; color:#fff; border-radius:4px; font-size:0.8rem; letter-spacing:1px;">
 
-    <!-- Disable CAPTCHA -->
-    <input type="hidden" name="_captcha" value="false">
+    <input type="email" name="email" placeholder="YOUR EMAIL" required
+           style="padding:16px; background:#111; border:1px solid #222; color:#fff; border-radius:4px; font-size:0.8rem; letter-spacing:1px;">
 
-    <!-- Redirect after sending -->
-    <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+    <textarea name="message" placeholder="YOUR MESSAGE" required
+              style="padding:16px; background:#111; border:1px solid #222; color:#fff; border-radius:4px; height:140px; font-size:0.8rem; letter-spacing:1px; resize:none;"></textarea>
 
-    <input type="text" name="name" placeholder="Your Name" required
-           style="padding:14px; background:#111; border:1px solid #222; color:#fff; border-radius:6px;">
-
-    <input type="email" name="email" placeholder="Your Email" required
-           style="padding:14px; background:#111; border:1px solid #222; color:#fff; border-radius:6px;">
-
-    <textarea name="message" placeholder="Your Message" required
-              style="padding:14px; background:#111; border:1px solid #222; color:#fff; border-radius:6px; height:140px;"></textarea>
-
-    <button class="btn"
-            style="padding:14px; background:#8f5aff; border:none; color:#000; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer; border-radius:6px;">
-      Send
+    <button type="submit" class="btn"
+            style="padding:16px; background:#8f5aff; border:none; color:#000; font-weight:700; text-transform:uppercase; letter-spacing:2px; cursor:pointer; border-radius:4px; margin-top:10px;">
+      Send Message
     </button>
   </form>
 </section>
 
-<!-- MOBILE MENU SCRIPT -->
+<div class="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+    <div style="padding: 30px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #222;">
+        <h2 style="font-size:0.8rem; letter-spacing:3px;">YOUR BAG</h2>
+        <span onclick="toggleCart()" style="cursor:pointer; font-size:0.8rem; opacity:0.5;">CLOSE ✕</span>
+    </div>
+    <div id="cartItems" style="padding: 30px; flex-grow:1; overflow-y:auto;">
+        </div>
+    <div style="padding:30px; border-top:1px solid #222;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+            <span style="font-size:0.7rem; letter-spacing:1px; opacity:0.5;">SUBTOTAL</span>
+            <span id="cartSubtotal" style="font-weight:600; color:#8f5aff;">$0.00</span>
+        </div>
+        <button id="checkoutBtn" class="btn" style="width:100%; padding:15px; border-radius:4px;">PROCEED TO CHECKOUT</button>
+    </div>
+</div>
+
+<div class="cart-trigger" onclick="toggleCart()">
+    <span class="cart-count">0</span>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <path d="M16 10a4 4 0 0 1-8 0"></path>
+    </svg>
+</div>
+
+<script src="app.js"></script>
 <script>
+  // Mobile Hamburger Logic
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
 
@@ -79,10 +99,8 @@
     navLinks.classList.toggle('open');
     hamburger.classList.toggle('open');
   });
-</script>
 
-<!-- HEADER SHADOW ON SCROLL -->
-<script>
+  // Header Scroll Effect
   window.addEventListener('scroll', () => {
     const header = document.querySelector('.site-header');
     if (window.scrollY > 10) {
@@ -92,27 +110,6 @@
     }
   });
 </script>
-<div class="cart-trigger" onclick="toggleCart()">
-    <span class="cart-count">0</span>
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-</div>
 
-<div class="cart-overlay" onclick="toggleCart()"></div>
-<div class="cart-sidebar" id="cartSidebar">
-    <div style="padding: 30px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #222;">
-        <h2 style="font-size:0.8rem; letter-spacing:3px;">YOUR BAG</h2>
-        <span onclick="toggleCart()" style="cursor:pointer;">CLOSE ✕</span>
-    </div>
-    <div id="cartItems" style="padding: 30px; flex-grow:1; overflow-y:auto;"></div>
-    <div style="padding: 30px; border-top:1px solid #222;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:20px; font-weight:600;">
-            <span>TOTAL</span>
-            <span id="cartSubtotal">$0.00</span>
-        </div>
-        <button onclick="location.href='checkout.html'" style="width:100%; padding:15px; background:#8f5aff; color:white; border:none; font-weight:bold; cursor:pointer;">PROCEED TO CHECKOUT</button>
-    </div>
-</div>
-
-<script src="app.js"></script>
 </body>
 </html>
