@@ -1,67 +1,98 @@
-/* --- PRODUCT GRIDS (The Fix for Giant Images) --- */
+/* --- OBSKURA PRODUCT GRID --- */
+:root {
+    --accent-purple: #8f5aff;
+    --accent-glow: rgba(143, 90, 255, 0.15);
+    --border-color: #1a1a1a;
+    --surface-dark: #111111;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
 .product-grid {
     display: grid;
-    /* This forces 4 columns. If you have 4 shirts, they each take 25% width */
+    /* Forces 4 columns on desktop to stop giant images */
     grid-template-columns: repeat(4, 1fr); 
     gap: 30px;
     padding: 80px 5%;
-    /* This stops the products from spreading too wide */
-    max-width: 1200px; 
-    margin: 0 auto; /* Centers the whole grid */
+    max-width: 1400px; 
+    margin: 0 auto;
 }
 
 .product {
     text-decoration: none;
-    color: inherit;
+    color: #ffffff;
     background: var(--surface-dark);
-    padding: 20px;
+    padding: 30px 20px;
     border: 1px solid var(--border-color);
     transition: var(--transition);
     text-align: center;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Hover Effect: The Signature OBSKURA Lift */
 .product:hover {
     transform: translateY(-10px);
     border-color: var(--accent-purple);
     box-shadow: 0 20px 40px var(--accent-glow);
+    background: #161616;
 }
 
 .product img {
     width: 100%;
-    /* This keeps the image height consistent and small */
+    /* Fixed height prevents layout shifts and giant images */
     height: 320px; 
     object-fit: contain; 
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    filter: grayscale(20%);
+    transition: var(--transition);
+}
+
+.product:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
 }
 
 .product h3 {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    min-height: 40px; /* Keeps text aligned even if titles are different lengths */
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    color: #eeeeee;
+    min-height: 34px; /* Keeps prices aligned horizontally */
 }
 
 .price {
     color: var(--accent-purple);
-    font-weight: 700;
-    font-size: 1rem;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
 }
 
-/* --- MOBILE FIXES --- */
-@media (max-width: 1024px) {
+/* --- RESPONSIVE FIXES --- */
+@media (max-width: 1100px) {
     .product-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+        grid-template-columns: repeat(2, 1fr); /* 2 per row for tablets */
+        gap: 20px;
     }
 }
 
 @media (max-width: 600px) {
     .product-grid {
-        grid-template-columns: 1fr; /* 1 per row on phones */
+        grid-template-columns: repeat(2, 1fr); /* Keep 2 per row on mobile for better browsing */
+        padding: 40px 3%;
+        gap: 15px;
+    }
+    .product {
+        padding: 15px;
     }
     .product img {
-        height: 280px;
+        height: 200px; /* Smaller images for mobile screens */
+    }
+    .product h3 {
+        font-size: 0.65rem;
+        letter-spacing: 1px;
     }
 }
