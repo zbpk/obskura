@@ -25,13 +25,12 @@
             overflow: hidden; background: #000;
         }
 
-        /* CHANGED: This now handles your backdrop-1.png */
         .hero-backdrop { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; 
-            background-image: url('images/backdrop-1.png'); /* Ensure this matches your filename */
+            background-image: url('images/backdrop-1.png'); 
             background-size: cover;
             background-position: center;
-            opacity: 0.6; /* Keeps the dark Gymshark aesthetic */
+            opacity: 0.6; 
         }
 
         .overlay-fade {
@@ -45,7 +44,7 @@
             text-shadow: 0 0 30px rgba(143, 90, 255, 0.4);
         }
 
-        /* Product Grid Fix */
+        /* Product Grid */
         .section-padding { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
         .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
         
@@ -70,8 +69,13 @@
 
         .contact-form { max-width: 600px; display: grid; gap: 15px; margin-top: 30px; }
         input, textarea { background: #0a0a0a; border: 1px solid #222; padding: 15px; color: #fff; width: 100%; box-sizing: border-box; font-family: inherit; }
-        .btn-white { background: #fff; color: #000; padding: 15px 40px; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s; }
+        
+        /* Button Styles */
+        .btn-white { background: #fff; color: #000; padding: 15px 40px; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s; letter-spacing: 1px;}
         .btn-white:hover { background: var(--accent); color: #fff; }
+        
+        .nav-link { color:#fff; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700; letter-spacing: 1px; }
+        .nav-link:hover { color: var(--accent); }
 
         @media (max-width: 1024px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { .mega-logo { letter-spacing: 5px; } }
@@ -81,10 +85,10 @@
 
 <header class="site-header">
     <div style="font-weight:900; letter-spacing:4px; font-size: 1.2rem;">OBSKURA</div>
-    <nav>
-        <a href="shop.html" style="color:#fff; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">SHOP</a>
-        <a href="#about" style="color:#fff; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">ABOUT</a>
-        <a href="#contact" style="color:#fff; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">CONTACT</a>
+    <nav style="display: flex; align-items: center;">
+        <a href="shop.html" class="nav-link">SHOP</a>
+        <a href="#about" class="nav-link">ABOUT</a>
+        <a href="#contact" class="nav-link">CONTACT</a>
     </nav>
 </header>
 
@@ -95,12 +99,16 @@
     <div class="hero-title-container">
         <h1 class="mega-logo">OBSKURA</h1>
         <p style="letter-spacing: 10px; color: var(--accent); font-weight: 800; font-size: 0.8rem; margin-top: 20px;">TRAIN IN THE SHADOWS</p>
-        <a href="#shop" class="btn-white" style="margin-top: 40px;">Shop Collection</a>
+        <a href="shop.html" class="btn-white" style="margin-top: 40px;">Shop Collection</a>
     </div>
 </section>
 
-<div id="shop" class="section-padding">
-    <h2 style="font-family:'Montserrat'; letter-spacing: 2px; margin-bottom: 40px; font-size: 1.2rem;">THE COLLECTION</h2>
+<div id="favorites" class="section-padding">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+        <h2 style="font-family:'Montserrat'; letter-spacing: 2px; font-size: 1.2rem; margin: 0;">OUR FAVORITES</h2>
+        <a href="shop.html" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px;">VIEW ALL →</a>
+    </div>
+    
     <div class="grid-container">
         <a href="products/black-shirt.html" class="product-card">
             <img src="images/Black Shirt Front.png" alt="Black Performance Tee">
@@ -110,13 +118,13 @@
             <img src="images/White Shirt Front.png" alt="White Essential Tee">
             <div class="card-info"><h3>White Essential Tee</h3><div class="price">$26.99</div></div>
         </a>
+        <a href="products/dark-blue-shirt.html" class="product-card">
+            <img src="images/Dark Blue Shirt Front.png" alt="Deep Blue Tee">
+            <div class="card-info"><h3>Deep Blue Tee</h3><div class="price">$26.99</div></div>
+        </a>
         <a href="products/purple-shirt.html" class="product-card">
             <img src="images/Purple Shirt Front.png" alt="Purple Signature Tee">
             <div class="card-info"><h3>Purple Signature Tee</h3><div class="price">$26.99</div></div>
-        </a>
-        <a href="products/dark-grey-shirt.html" class="product-card">
-            <img src="images/Dark Grey Shirt Front.png" alt="Slate Grey Tee">
-            <div class="card-info"><h3>Slate Grey Tee</h3><div class="price">$26.99</div></div>
         </a>
     </div>
 </div>
