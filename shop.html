@@ -1,68 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OBSKURA — Shop</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBSKURA — Shop All</title>
     <style>
-        :root {
-            --accent-glow: rgba(143, 90, 255, 0.2);
-            --card-bg: #111111;
+        :root { --purple: #8f5aff; --bg: #0a0a0a; --card: #111111; }
+        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+        
+        /* Header */
+        header { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
+        .logo { font-weight: 800; letter-spacing: 5px; font-size: 1.5rem; text-decoration: none; color: white; }
+        nav a { color: #888; text-decoration: none; margin-left: 20px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        nav a:hover { color: var(--purple); }
+
+        /* Grid Logic */
+        .container { max-width: 1400px; margin: 0 auto; padding: 60px 5%; }
+        h1 { font-size: 3rem; letter-spacing: 10px; text-transform: uppercase; color: var(--purple); text-align: center; margin-bottom: 50px; }
+        
+        .products-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+            gap: 30px; 
         }
-        body { background-color: #0a0a0a; color: white; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .badge { position: absolute; top: 15px; left: 15px; background: #8f5aff; color: white; font-size: 0.55rem; padding: 5px 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; z-index: 10; }
-        .shop-hero { padding: 120px 5% 60px; text-align: center; background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%); }
-        .shop-tabs-wrapper { background: #0a0a0a; border-top: 1px solid #222; border-bottom: 1px solid #222; padding: 10px 0; position: sticky; top: 0; z-index: 90; }
-        .tab-btn { background: transparent; border: none; color: #555; padding: 10px 25px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .tab-btn.active { color: #8f5aff; }
-        .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 40px 5%; max-width: 1400px; margin: 0 auto; }
-        .product { background: var(--card-bg); border: 1px solid #1a1a1a; padding: 20px; transition: 0.4s; display: flex; flex-direction: column; align-items: center; text-decoration: none; position: relative; }
-        .product:hover { border-color: #8f5aff; transform: translateY(-5px); box-shadow: 0 10px 30px var(--accent-glow); }
-        .product img { width: 100%; height: auto; margin-bottom: 20px; }
-        .product h3 { font-size: 0.8rem; letter-spacing: 2px; margin: 10px 0; color: #eee; text-align: center; }
-        .product .price { font-weight: 800; color: #8f5aff; font-size: 1rem; }
-        @media (max-width: 768px) { .products { grid-template-columns: 1fr 1fr; gap: 15px; } }
+
+        /* Product Cards */
+        .item { 
+            background: var(--card); 
+            border: 1px solid #222; 
+            padding: 20px; 
+            text-align: center; 
+            text-decoration: none; 
+            color: white; 
+            transition: 0.3s;
+            position: relative;
+        }
+        .item:hover { border-color: var(--purple); transform: translateY(-5px); }
+        .item img { width: 100%; height: auto; margin-bottom: 15px; }
+        .item h3 { font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; margin: 10px 0; opacity: 0.8; }
+        .item .price { color: var(--purple); font-weight: 800; font-size: 1rem; }
+
+        .badge { position: absolute; top: 10px; left: 10px; background: var(--purple); font-size: 0.6rem; padding: 4px 8px; font-weight: 800; }
+
+        @media (max-width: 600px) {
+            .products-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+            h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="logo" style="padding: 20px; font-weight: 800; font-size: 1.5rem; text-align: center;">OBSKURA</div>
-    <nav style="text-align: center; padding-bottom: 20px;">
-        <a href="index.html" style="color: white; margin: 0 15px; text-decoration: none;">Home</a>
-        <a href="shop.html" style="color: #8f5aff; margin: 0 15px; text-decoration: none;">Shop</a>
+<header>
+    <a href="index.html" class="logo">OBSKURA</a>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html" style="color: white;">Shop</a>
     </nav>
 </header>
 
-<section class="shop-hero">
-    <h1 style="color:#8f5aff; text-transform:uppercase; letter-spacing:8px; font-size: 3rem; margin: 0;">Collections</h1>
-</section>
-
-<div class="shop-tabs-wrapper">
-    <div style="display: flex; justify-content: center;">
-        <button class="tab-btn active">T-Shirts</button>
+<div class="container">
+    <h1>COLLECTIONS</h1>
+    
+    <div class="products-grid">
+        <a href="products/black-shirt.html" class="item"><div class="badge">BEST SELLER</div><img src="images/Black Shirt Front.png"><h3>Black Performance Tee</h3><div class="price">$26.99</div></a>
+        <a href="products/purple-shirt.html" class="item"><div class="badge">SIGNATURE</div><img src="images/Purple Shirt Front.png"><h3>Purple Performance Tee</h3><div class="price">$26.99</div></a>
+        <a href="products/white-shirt.html" class="item"><div class="badge">NEW</div><img src="images/White Shirt Front.png"><h3>White Essential Tee</h3><div class="price">$26.99</div></a>
+        
+        <a href="products/beige-shirt.html" class="item"><img src="images/Beige Shirt Front.png"><h3>Beige Performance Tee</h3><div class="price">$26.99</div></a>
+        <a href="products/brown-shirt.html" class="item"><img src="images/Brown Shirt Front.png"><h3>Brown Earth Tee</h3><div class="price">$26.99</div></a>
+        <a href="products/dark-blue-shirt.html" class="item"><img src="images/Dark Blue Shirt Front.png"><h3>Dark Blue Tee</h3><div class="price">$26.99</div></a>
+        <a href="products/dark-green-shirt.html" class="item"><img src="images/Dark Green Shirt Front.png"><h3>Dark Green Tee</h3><div class="price">$26.99</div></a>
+        <a href="products/dark-grey-shirt.html" class="item"><img src="images/Dark Grey Shirt Front.png"><h3>Dark Grey Tee</h3><div class="price">$26.99</div></a>
+        <a href="products/light-blue-shirt.html" class="item"><img src="images/Light Blue Shirt Front.png"><h3>Light Blue Tee</h3><div class="price">$26.99</div></a>
+        <a href="products/light-green-shirt.html" class="item"><img src="images/Light Green Shirt Front.png"><h3>Light Green Tee</h3><div class="price">$26.99</div></a>
+        <a href="products/light-grey-shirt.html" class="item"><img src="images/Light Grey Shirt Front.png"><h3>Light Grey Tee</h3><div class="price">$26.99</div></a>
+        <a href="products/orange-shirt.html" class="item"><img src="images/Orange Shirt Front.png"><h3>Orange Performance</h3><div class="price">$26.99</div></a>
+        <a href="products/red-shirt.html" class="item"><img src="images/Red Shirt Front.png"><h3>Crimson Tee</h3><div class="price">$26.99</div></a>
     </div>
 </div>
-
-<section class="shop-section" id="tshirts">
-    <div class="products">
-        <a class="product" href="products/black-shirt.html"><div class="badge">Best Seller</div><img src="images/Black Shirt Front.png"><h3>Black Performance Tee</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/purple-shirt.html"><div class="badge">Signature</div><img src="images/Purple Shirt Front.png"><h3>Purple Performance Tee</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/white-shirt.html"><div class="badge">New</div><img src="images/White Shirt Front.png"><h3>White Essential Tee</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/beige-shirt.html"><img src="images/Beige Shirt Front.png"><h3>Beige Performance Tee</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/brown-shirt.html"><img src="images/Brown Shirt Front.png"><h3>Brown Earth Tee</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/dark-blue-shirt.html"><img src="images/Dark Blue Shirt Front.png"><h3>Dark Blue Tee</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/dark-green-shirt.html"><img src="images/Dark Green Shirt Front.png"><h3>Dark Green Tee</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/dark-grey-shirt.html"><img src="images/Dark Grey Shirt Front.png"><h3>Dark Grey Tee</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/light-blue-shirt.html"><img src="images/Light Blue Shirt Front.png"><h3>Light Blue Tee</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/light-green-shirt.html"><img src="images/Light Green Shirt Front.png"><h3>Light Green Tee</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/light-grey-shirt.html"><img src="images/Light Grey Shirt Front.png"><h3>Light Grey Tee</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/orange-shirt.html"><img src="images/Orange Shirt Front.png"><h3>Orange Performance</h3><p class="price">$26.99</p></a>
-        <a class="product" href="products/red-shirt.html"><img src="images/Red Shirt Front.png"><h3>Crimson Tee</h3><p class="price">$26.99</p></a>
-    </div>
-</section>
 
 </body>
 </html>
