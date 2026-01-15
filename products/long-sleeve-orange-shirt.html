@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orange Long Sleeve | OBSKURA</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        .product-page { display: grid; grid-template-columns: 1fr 450px; gap: 60px; padding: 140px 5% 80px; max-width: 1400px; margin: 0 auto; }
+        .product-images img { width: 100%; background: #080808; border: 1px solid #1a1a1a; border-radius: 4px; }
+        .product-details { position: sticky; top: 140px; height: fit-content; }
+        .product-details h1 { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 5px; text-transform: uppercase; }
+        .price { font-size: 1.5rem; color: var(--accent); font-weight: 800; margin-bottom: 30px; }
+        
+        .selector-label { font-size: 0.65rem; color: #555; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-weight: 800; }
+        .size-options { display: flex; gap: 10px; margin-bottom: 30px; }
+        .size-btn { border: 1px solid #222; background: none; color: #fff; width: 60px; height: 50px; cursor: pointer; transition: 0.3s; font-weight: 700; }
+        .size-btn:hover, .size-btn.active { border-color: var(--accent); color: var(--accent); }
+
+        .buy-btn { width: 100%; padding: 22px; background: #fff; color: #000; border: none; font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.3s; letter-spacing: 2px; }
+        .buy-btn:hover { background: var(--accent); color: #fff; }
+
+        .description { margin-top: 30px; border-top: 1px solid #111; padding-top: 30px; line-height: 1.8; color: #888; font-size: 0.95rem; }
+        
+        @media (max-width: 1000px) { 
+            .product-page { grid-template-columns: 1fr; padding-top: 100px; }
+            .product-details { position: static; }
+        }
+    </style>
+</head>
+<body style="background: #000; color: #fff;">
+
+<header class="site-header">
+    <div style="font-weight:900; letter-spacing:4px; font-size: 1.2rem;">OBSKURA</div>
+    <nav><a href="../shop.html" class="nav-link">BACK TO SHOP</a></nav>
+</header>
+
+<div class="product-page">
+    <div class="product-images">
+        <img src="../images/Long Sleeve Orange Shirt Front.png" alt="Orange Long Sleeve Front">
+    </div>
+
+    <div class="product-details">
+        <h1>Orange Long Sleeve</h1>
+        <div class="price">$34.99</div>
+
+        <div class="selector-label">Select Size</div>
+        <div class="size-options">
+            <button class="size-btn">S</button>
+            <button class="size-btn">M</button>
+            <button class="size-btn">L</button>
+            <button class="size-btn">XL</button>
+        </div>
+
+        <button class="buy-btn">Add To Bag</button>
+
+        <div class="description">
+            <p><strong>FLASH SERIES. UNSTOPPABLE ENERGY.</strong><br>
+            A high-impact colorway from our Flash Series. The Orange Long Sleeve is engineered for visibility and peak performance. Breathable, durable, and built to make a statement in the gym.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
