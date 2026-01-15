@@ -1,190 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop All | OBSKURA</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-</head>
-<body style="background: #000;">
+<div class="shop-grid" id="product-grid">
+    <a href="products/black-shirt.html" class="product-card" data-price="26.99" data-pop="1" data-cat="core" data-type="tee" data-color="black">
+        <img src="images/Black Shirt Front.png"><div class="card-info"><h3>Black Performance Tee</h3><div class="price-tag">$26.99</div></div>
+    </a>
+    <a href="products/white-shirt.html" class="product-card" data-price="26.99" data-pop="2" data-cat="core" data-type="tee" data-color="white">
+        <img src="images/White Shirt Front.png"><div class="card-info"><h3>White Essential Tee</h3><div class="price-tag">$26.99</div></div>
+    </a>
+    <a href="products/purple-shirt.html" class="product-card" data-price="26.99" data-pop="3" data-cat="bright" data-type="tee" data-color="purple">
+        <img src="images/Purple Shirt Front.png"><div class="card-info"><h3>Signature Purple Tee</h3><div class="price-tag">$26.99</div></div>
+    </a>
+    <a href="products/dark-blue-shirt.html" class="product-card" data-price="26.99" data-pop="4" data-cat="core" data-type="tee" data-color="blue">
+        <img src="images/Dark Blue Shirt Front.png"><div class="card-info"><h3>Deep Blue Tee</h3><div class="price-tag">$26.99</div></div>
+    </a>
+    <a href="products/brown-shirt.html" class="product-card" data-price="26.99" data-pop="5" data-cat="earth" data-type="tee" data-color="brown">
+        <img src="images/Brown Shirt Front.png"><div class="card-info"><h3>Earth Brown Tee</h3><div class="price-tag">$26.99</div></div>
+    </a>
+    <a href="products/dark-green-shirt.html" class="product-card" data-price="26.99" data-pop="6" data-cat="earth" data-type="tee" data-color="green">
+        <img src="images/Dark Green Shirt Front.png"><div class="card-info"><h3>Forest Green Tee</h3><div class="price-tag">$26.99</div></div>
+    </a>
+    <a href="products/orange-shirt.html" class="product-card" data-price="26.99" data-pop="7" data-cat="bright" data-type="tee" data-color="orange">
+        <img src="images/Orange Shirt Front.png"><div class="card-info"><h3>Flash Orange Tee</h3><div class="price-tag">$26.99</div></div>
+    </a>
+    <a href="products/pink-shirt.html" class="product-card" data-price="26.99" data-pop="8" data-cat="bright" data-type="tee" data-color="pink">
+        <img src="images/Pink Shirt Front.png"><div class="card-info"><h3>Rose Pink Tee</h3><div class="price-tag">$26.99</div></div>
+    </a>
 
-<header class="site-header">
-    <div class="logo">OBSKURA</div>
-    <nav>
-        <a href="index.html" class="nav-link">HOME</a>
-        <a href="shop.html" class="nav-link" style="color: var(--accent);">SHOP</a>
-    </nav>
-</header>
-
-<div class="shop-page-container">
-    <aside class="filters-sidebar">
-        <div class="filter-group">
-            <h4>Collection</h4>
-            <ul class="filter-list" data-group="cat">
-                <li class="active" data-filter="all">All Items</li>
-                <li data-filter="core">Core Essentials</li>
-                <li data-filter="earth">Earth Tones</li>
-                <li data-filter="bright">Bright Series</li>
-            </ul>
-        </div>
-
-        <div class="filter-group">
-            <h4>Clothing Type</h4>
-            <ul class="filter-list" data-group="type">
-                <li class="active" data-filter="all">All Types</li>
-                <li data-filter="tee">Performance Tees</li>
-                <li data-filter="longsleeve">Long Sleeves</li>
-            </ul>
-        </div>
-
-        <div class="filter-group">
-            <h4>Color</h4>
-            <div class="color-grid">
-                <div class="color-dot active" data-filter="all" style="background: #fff; border: 1px dashed #000;" title="All"></div>
-                <div class="color-dot" data-filter="black" style="background: #000;" title="Black"></div>
-                <div class="color-dot" data-filter="white" style="background: #fff;" title="White"></div>
-                <div class="color-dot" data-filter="purple" style="background: #8f5aff;" title="Purple"></div>
-                <div class="color-dot" data-filter="blue" style="background: #1e3a8a;" title="Blue"></div>
-                <div class="color-dot" data-filter="green" style="background: #14532d;" title="Green"></div>
-                <div class="color-dot" data-filter="brown" style="background: #451a03;" title="Brown"></div>
-                <div class="color-dot" data-filter="grey" style="background: #3f3f46;" title="Grey"></div>
-                <div class="color-dot" data-filter="orange" style="background: #ea580c;" title="Orange"></div>
-                <div class="color-dot" data-filter="beige" style="background: #d6d3d1;" title="Beige"></div>
-                <div class="color-dot" data-filter="red" style="background: #991b1b;" title="Red"></div>
-            </div>
-        </div>
-        
-        <button id="clear-filters" class="btn-white" style="padding: 10px; font-size: 0.6rem; width: 100%; margin-top: 20px;">Clear All Filters</button>
-    </aside>
-
-    <main>
-        <div class="shop-controls">
-            <div id="results-count" style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 1px;">SHOWING: ALL PRODUCTS</div>
-            <select id="sort-dropdown">
-                <option value="popular">Most Popular</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-            </select>
-        </div>
-
-        <div class="shop-grid" id="product-grid">
-            <a href="products/black-shirt.html" class="product-card" data-price="26.99" data-pop="1" data-cat="core" data-type="tee" data-color="black">
-                <img src="images/Black Shirt Front.png"><div class="card-info"><h3>Black Performance Tee</h3><div class="price-tag">$26.99</div></div>
-            </a>
-            <a href="products/white-shirt.html" class="product-card" data-price="26.99" data-pop="2" data-cat="core" data-type="tee" data-color="white">
-                <img src="images/White Shirt Front.png"><div class="card-info"><h3>White Essential Tee</h3><div class="price-tag">$26.99</div></div>
-            </a>
-            <a href="products/purple-shirt.html" class="product-card" data-price="26.99" data-pop="3" data-cat="bright" data-type="tee" data-color="purple">
-                <img src="images/Purple Shirt Front.png"><div class="card-info"><h3>Signature Purple Tee</h3><div class="price-tag">$26.99</div></div>
-            </a>
-            <a href="products/brown-shirt.html" class="product-card" data-price="26.99" data-pop="5" data-cat="earth" data-type="tee" data-color="brown">
-                <img src="images/Brown Shirt Front.png"><div class="card-info"><h3>Earth Brown Tee</h3><div class="price-tag">$26.99</div></div>
-            </a>
-            <a href="products/dark-green-shirt.html" class="product-card" data-price="26.99" data-pop="6" data-cat="earth" data-type="tee" data-color="green">
-                <img src="images/Dark Green Shirt Front.png"><div class="card-info"><h3>Forest Green Tee</h3><div class="price-tag">$26.99</div></div>
-            </a>
-            <a href="products/light-grey-shirt.html" class="product-card" data-price="26.99" data-pop="8" data-cat="core" data-type="tee" data-color="grey">
-                <img src="images/Light Grey Shirt Front.png"><div class="card-info"><h3>Light Grey Tee</h3><div class="price-tag">$26.99</div></div>
-            </a>
-            <a href="products/orange-shirt.html" class="product-card" data-price="26.99" data-pop="10" data-cat="bright" data-type="tee" data-color="orange">
-                <img src="images/Orange Shirt Front.png"><div class="card-info"><h3>Flash Orange Tee</h3><div class="price-tag">$26.99</div></div>
-            </a>
-            <a href="products/light-blue-shirt.html" class="product-card" data-price="26.99" data-pop="12" data-cat="bright" data-type="tee" data-color="blue">
-                <img src="images/Light Blue Shirt Front.png"><div class="card-info"><h3>Sky Blue Tee</h3><div class="price-tag">$26.99</div></div>
-            </a>
-
-            <a href="products/long-sleeve-black-shirt.html" class="product-card" data-price="34.99" data-pop="14" data-cat="core" data-type="longsleeve" data-color="black">
-                <img src="images/Long Sleeve Black Shirt Front.png"><div class="card-info"><h3>Black Long Sleeve</h3><div class="price-tag">$34.99</div></div>
-            </a>
-            <a href="products/long-sleeve-white-shirt.html" class="product-card" data-price="34.99" data-pop="15" data-cat="core" data-type="longsleeve" data-color="white">
-                <img src="images/Long Sleeve White Shirt Front.png"><div class="card-info"><h3>White Long Sleeve</h3><div class="price-tag">$34.99</div></div>
-            </a>
-            <a href="products/long-sleeve-dark-blue-shirt.html" class="product-card" data-price="34.99" data-pop="17" data-cat="core" data-type="longsleeve" data-color="blue">
-                <img src="images/Long Sleeve Dark Blue Shirt Front.png"><div class="card-info"><h3>Deep Blue Long Sleeve</h3><div class="price-tag">$34.99</div></div>
-            </a>
-            <a href="products/long-sleeve-dark-green-shirt.html" class="product-card" data-price="34.99" data-pop="19" data-cat="earth" data-type="longsleeve" data-color="green">
-                <img src="images/Long Sleeve Dark Green Shirt Front.png"><div class="card-info"><h3>Dark Green Long Sleeve</h3><div class="price-tag">$34.99</div></div>
-            </a>
-            <a href="products/long-sleeve-dark-grey-shirt.html" class="product-card" data-price="34.99" data-pop="20" data-cat="core" data-type="longsleeve" data-color="grey">
-                <img src="images/Long Sleeve Dark Grey Shirt Front.png"><div class="card-info"><h3>Dark Grey Long Sleeve</h3><div class="price-tag">$34.99</div></div>
-            </a>
-            <a href="products/long-sleeve-beige-shirt.html" class="product-card" data-price="34.99" data-pop="22" data-cat="earth" data-type="longsleeve" data-color="beige">
-                <img src="images/Long Sleeve Beige Shirt Front.png"><div class="card-info"><h3>Beige Long Sleeve</h3><div class="price-tag">$34.99</div></div>
-            </a>
-            <a href="products/long-sleeve-red-shirt.html" class="product-card" data-price="34.99" data-pop="27" data-cat="bright" data-type="longsleeve" data-color="red">
-                <img src="images/Long Sleeve Red Shirt Front.png"><div class="card-info"><h3>Red Long Sleeve</h3><div class="price-tag">$34.99</div></div>
-            </a>
-            <a href="products/long-sleeve-light-green-shirt.html" class="product-card" data-price="34.99" data-pop="26" data-cat="bright" data-type="longsleeve" data-color="green">
-                <img src="images/Long Sleeve Light Green Shirt Front.png"><div class="card-info"><h3>Mint Green Long Sleeve</h3><div class="price-tag">$34.99</div></div>
-            </a>
-            <a href="products/long-sleeve-purple-shirt.html" class="product-card" data-price="34.99" data-pop="16" data-cat="bright" data-type="longsleeve" data-color="purple">
-                <img src="images/Long Sleeve Purple Shirt Front.png"><div class="card-info"><h3>Purple Long Sleeve</h3><div class="price-tag">$34.99</div></div>
-            </a>
-        </div>
-    </main>
+    <a href="products/long-sleeve-black-shirt.html" class="product-card" data-price="34.99" data-pop="10" data-cat="core" data-type="longsleeve" data-color="black">
+        <img src="images/Long Sleeve Black Shirt Front.png"><div class="card-info"><h3>Black Long Sleeve</h3><div class="price-tag">$34.99</div></div>
+    </a>
+    <a href="products/long-sleeve-white-shirt.html" class="product-card" data-price="34.99" data-pop="11" data-cat="core" data-type="longsleeve" data-color="white">
+        <img src="images/Long Sleeve White Shirt Front.png"><div class="card-info"><h3>White Long Sleeve</h3><div class="price-tag">$34.99</div></div>
+    </a>
+    <a href="products/long-sleeve-dark-blue-shirt.html" class="product-card" data-price="34.99" data-pop="12" data-cat="core" data-type="longsleeve" data-color="blue">
+        <img src="images/Long Sleeve Dark Blue Shirt Front.png"><div class="card-info"><h3>Deep Blue Long Sleeve</h3><div class="price-tag">$34.99</div></div>
+    </a>
+    <a href="products/long-sleeve-brown-shirt.html" class="product-card" data-price="34.99" data-pop="13" data-cat="earth" data-type="longsleeve" data-color="brown">
+        <img src="images/Long Sleeve Brown Shirt Front.png"><div class="card-info"><h3>Brown Long Sleeve</h3><div class="price-tag">$34.99</div></div>
+    </a>
+    <a href="products/long-sleeve-dark-green-shirt.html" class="product-card" data-price="34.99" data-pop="14" data-cat="earth" data-type="longsleeve" data-color="green">
+        <img src="images/Long Sleeve Dark Green Shirt Front.png"><div class="card-info"><h3>Dark Green Long Sleeve</h3><div class="price-tag">$34.99</div></div>
+    </a>
+    <a href="products/long-sleeve-dark-grey-shirt.html" class="product-card" data-price="34.99" data-pop="15" data-cat="core" data-type="longsleeve" data-color="grey">
+        <img src="images/Long Sleeve Dark Grey Shirt Front.png"><div class="card-info"><h3>Dark Grey Long Sleeve</h3><div class="price-tag">$34.99</div></div>
+    </a>
+    <a href="products/long-sleeve-red-shirt.html" class="product-card" data-price="34.99" data-pop="16" data-cat="bright" data-type="longsleeve" data-color="red">
+        <img src="images/Long Sleeve Red Shirt Front.png"><div class="card-info"><h3>Red Long Sleeve</h3><div class="price-tag">$34.99</div></div>
+    </a>
+    <a href="products/long-sleeve-light-blue-shirt.html" class="product-card" data-price="34.99" data-pop="17" data-cat="bright" data-type="longsleeve" data-color="blue">
+        <img src="images/Long Sleeve Light Blue Shirt Front.png"><div class="card-info"><h3>Sky Blue Long Sleeve</h3><div class="price-tag">$34.99</div></div>
+    </a>
+    <a href="products/long-sleeve-purple-shirt.html" class="product-card" data-price="34.99" data-pop="18" data-cat="bright" data-type="longsleeve" data-color="purple">
+        <img src="images/Long Sleeve Purple Shirt Front.png"><div class="card-info"><h3>Purple Long Sleeve</h3><div class="price-tag">$34.99</div></div>
+    </a>
 </div>
-
-<script>
-    const grid = document.getElementById('product-grid');
-    const cards = Array.from(grid.getElementsByClassName('product-card'));
-    const sortDropdown = document.getElementById('sort-dropdown');
-    
-    let activeFilters = { cat: 'all', type: 'all', color: 'all' };
-
-    function filterProducts() {
-        let visibleCount = 0;
-        cards.forEach(card => {
-            const matchCat = activeFilters.cat === 'all' || card.dataset.cat === activeFilters.cat;
-            const matchType = activeFilters.type === 'all' || card.dataset.type === activeFilters.type;
-            const matchColor = activeFilters.color === 'all' || card.dataset.color === activeFilters.color;
-
-            if (matchCat && matchType && matchColor) {
-                card.style.display = 'block';
-                visibleCount++;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-        document.getElementById('results-count').innerText = `FOUND: ${visibleCount} ITEMS`;
-    }
-
-    document.querySelectorAll('.filter-list li').forEach(li => {
-        li.addEventListener('click', function() {
-            const group = this.parentElement.dataset.group;
-            activeFilters[group] = this.dataset.filter;
-            this.parentElement.querySelectorAll('li').forEach(el => el.classList.remove('active'));
-            this.classList.add('active');
-            filterProducts();
-        });
-    });
-
-    document.querySelectorAll('.color-dot').forEach(dot => {
-        dot.addEventListener('click', function() {
-            activeFilters.color = this.dataset.filter;
-            document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
-            this.classList.add('active');
-            filterProducts();
-        });
-    });
-
-    sortDropdown.addEventListener('change', () => {
-        const val = sortDropdown.value;
-        let sorted = [...cards];
-        if (val === 'price-low') sorted.sort((a,b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
-        if (val === 'price-high') sorted.sort((a,b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
-        if (val === 'popular') sorted.sort((a,b) => parseInt(a.dataset.pop) - parseInt(b.dataset.pop));
-        
-        grid.innerHTML = "";
-        sorted.forEach(c => grid.appendChild(c));
-    });
-
-    document.getElementById('clear-filters').addEventListener('click', () => {
-        activeFilters = { cat: 'all', type: 'all', color: 'all' };
-        document.querySelectorAll('.filter-list li, .color-dot').forEach(el => el.classList.remove('active'));
-        document.querySelectorAll('.filter-list li[data-filter="all"], .color-dot[data-filter="all"]').forEach(el => el.classList.add('active'));
-        filterProducts();
-    });
-</script>
-</body>
-</html>
