@@ -6,29 +6,55 @@
   <title>OBSKURA — Train in the Shadows</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+  <style>
+    /* Emergency Styles - This fixes the giant images and broken header immediately */
+    :root { --purple: #8f5aff; }
+    body { background: #0a0a0a; color: white; margin: 0; font-family: 'Inter', sans-serif; }
+    
+    .site-header { 
+      display: flex; justify-content: space-between; align-items: center; 
+      padding: 20px 5%; background: #000; border-bottom: 1px solid #1a1a1a;
+    }
+    .logo { font-weight: 800; letter-spacing: 5px; font-size: 1.2rem; color: white; text-decoration: none; }
+    .nav-links a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .nav-links a.active { color: var(--purple); }
+
+    .hero { padding: 100px 5%; text-align: center; background: radial-gradient(circle, #111 0%, #0a0a0a 100%); }
+    .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 6vw, 4rem); letter-spacing: 8px; margin: 0 0 20px; }
+    .hero p { opacity: 0.6; max-width: 600px; margin: 0 auto 30px; line-height: 1.6; }
+    .btn { background: var(--purple); color: black; padding: 15px 30px; text-decoration: none; font-weight: 800; font-size: 0.8rem; letter-spacing: 2px; }
+
+    .product-grid { 
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 30px; padding: 60px 5%; max-width: 1400px; margin: 0 auto;
+    }
+    .product { text-decoration: none; color: white; text-align: center; transition: 0.3s; }
+    .product:hover { transform: translateY(-5px); }
+    .product img { width: 100%; height: auto; margin-bottom: 15px; border: 1px solid #1a1a1a; background: #111; }
+    .product h3 { font-size: 0.8rem; letter-spacing: 1px; margin: 10px 0; }
+    .product .price { color: var(--purple); font-weight: 800; }
+
+    @media (max-width: 768px) { .product-grid { grid-template-columns: 1fr 1fr; gap: 15px; } }
+  </style>
 </head>
 
 <body>
 
 <header class="site-header">
-  <div class="logo">OBSKURA</div>
+  <a href="index.html" class="logo">OBSKURA</a>
   <nav class="nav-links">
     <a href="index.html" class="active">Home</a>
     <a href="shop.html">Shop</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="#" onclick="toggleCart(); return false;" class="nav-cart">
-      BAG (<span class="cart-count">0</span>)
-    </a>
+    <a href="#" onclick="toggleCart(); return false;" class="nav-cart">BAG (<span class="cart-count">0</span>)</a>
   </nav>
 </header>
 
 <section class="hero">
-  <div class="hero-content">
     <h1>TRAIN IN THE SHADOWS</h1>
-    <p>Gear engineered for the ones who don’t need the spotlight. Built for silence. Built for obsession.</p>
+    <p>Gear engineered for the ones who don’t need the spotlight. Built for silence. Built for obsession. Built for the underground.</p>
     <a class="btn" href="shop.html">ENTER THE COLLECTION</a>
-  </div>
 </section>
 
 <section class="product-grid">
@@ -56,6 +82,14 @@
     <div class="price">$26.99</div>
   </a>
 </section>
+
+<div id="cartSidebar" style="display:none; position:fixed; right:0; top:0; width:300px; height:100%; background:#111; z-index:2000; padding:20px; border-left:1px solid #222;">
+    <h2 style="font-size:0.8rem; letter-spacing:3px;">YOUR BAG</h2>
+    <div id="cartItems"></div>
+    <div style="margin-top:20px; border-top:1px solid #222; padding-top:20px;">
+        <button onclick="location.href='https://zbpk.github.io/obskura/checkout.html'" style="width:100%; padding:15px; background:var(--purple); border:none; font-weight:800; cursor:pointer;">CHECKOUT</button>
+    </div>
+</div>
 
 <script src="app.js"></script>
 </body>
