@@ -1,175 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBSKURA | Secure Checkout</title>
-    <script src="https://js.stripe.com/v3/"></script>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        :root { --accent: #8f5aff; --bg: #0a0a0a; --surface: #141414; --border: #27272a; }
-        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; }
-        .checkout-layout { display: grid; grid-template-columns: 1fr 450px; min-height: 100vh; }
-        
-        .checkout-form { padding: 80px 10%; }
-        .input-group { margin-bottom: 25px; }
-        label { display: block; font-size: 0.7rem; color: #a1a1aa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        input, #card-element { 
-            width: 100%; padding: 15px; background: var(--surface); 
-            border: 1px solid var(--border); color: white; outline: none; 
-        }
+// --- OBSKURA GLOBAL ENGINE ---
+let cart = JSON.parse(localStorage.getItem('obskuraCart')) || [];
 
-        #card-element { padding: 18px; }
-        #card-errors { color: #ff5f5f; font-size: 0.8rem; margin-top: 10px; font-weight: 600; }
+// 1. PATH RESOLUTION: Detect if we are inside the 'products' folder
+const isProductPage = window.location.pathname.includes('/products/');
+const rootPath = isProductPage ? '../' : '';
+const checkoutPath = isProductPage ? '../checkout.html' : 'checkout.html';
 
-        .order-summary { background: #0f0f0f; border-left: 1px solid var(--border); padding: 80px 50px; }
-        .summary-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
-        .summary-item img { width: 65px; height: 80px; object-fit: cover; border: 1px solid var(--border); }
-        .totals { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px; }
-        .row { display: flex; justify-content: space-between; margin-bottom: 10px; }
-        .grand-total { font-size: 1.2rem; font-weight: 700; color: var(--accent); }
-
-        .pay-btn {
-            width: 100%; padding: 22px; background: var(--accent);
-            border: none; color: white; font-weight: 800; cursor: pointer;
-            letter-spacing: 3px; text-transform: uppercase; margin-top: 30px;
-            transition: all 0.3s ease;
-        }
-        .pay-btn:hover { background: #7c3aed; transform: translateY(-2px); }
-        .pay-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-        @media (max-width: 900px) {
-            .checkout-layout { grid-template-columns: 1fr; }
-            .order-summary { border-left: none; border-top: 1px solid var(--border); order: -1; }
-        }
-    </style>
-</head>
-<body>
-
-<div class="checkout-layout">
-    <div class="checkout-form">
-        <a href="shop.html" style="color: #a1a1aa; text-decoration: none; font-size: 0.7rem; letter-spacing: 1px;">← RETURN TO SHOP</a>
-        <h2 style="font-family:'Montserrat'; letter-spacing:4px; margin: 30px 0 50px;">SECURE CHECKOUT</h2>
-
-        <div class="input-group">
-            <label>Email Address</label>
-            <input type="email" id="email" placeholder="athlete@obskura.com">
-        </div>
-
-        <h3 style="font-size: 0.8rem; margin: 40px 0 20px; letter-spacing: 2px; color: var(--accent);">01. SHIPPING</h3>
-        <div class="input-group"><label>Full Name</label><input type="text" id="name"></div>
-        <div class="input-group"><label>Shipping Address</label><input type="text" id="address"></div>
-
-        <h3 style="font-size: 0.8rem; margin: 40px 0 20px; letter-spacing: 2px; color: var(--accent);">02. PAYMENT</h3>
-        <div class="input-group">
-            <label>Credit or Debit Card</label>
-            <div id="card-element"></div>
-            <div id="card-errors" role="alert"></div>
-        </div>
-
-        <button class="pay-btn" id="submit-button">Pay Securely</button>
-        <p style="text-align: center; font-size: 0.6rem; color: #555; margin-top: 20px; letter-spacing: 1px;">ENCRYPTED BY STRIPE SSL</p>
-    </div>
-
-    <div class="order-summary">
-        <h3 style="font-size: 0.8rem; letter-spacing: 3px; margin-bottom: 40px; color: #555;">ORDER SUMMARY</h3>
-        <div id="checkoutItems"></div>
-        
-        <div class="totals">
-            <div class="row"><span>Subtotal</span><span id="subTotal">$0.00</span></div>
-            <div class="row" style="color: #4ade80;"><span>Shipping</span><span>COMPLIMENTARY</span></div>
-            <div class="row grand-total" style="margin-top: 20px;"><span>Total</span><span id="grandTotal">$0.00</span></div>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Initialize Stripe with your test key
-    const stripe = Stripe('pk_test_51STxPsQo64xbfRgdXh5lvR1FKQCX2F8vpynhBkb9DK6oAW3dEev5NMKTcvHWQrcCYRnJqYsrlIJjVVexsYvw3mkg00P11mZdyS'); 
-    const elements = stripe.elements();
-
-    const style = {
-        base: {
-            color: '#ffffff',
-            fontFamily: '"Inter", sans-serif',
-            fontSize: '16px',
-            '::placeholder': { color: '#555' }
-        },
-        invalid: { color: '#ff5f5f', iconColor: '#ff5f5f' }
-    };
-
-    const card = elements.create('card', { style: style, hidePostalCode: true });
-    card.mount('#card-element');
-
-    card.on('change', (event) => {
-        const displayError = document.getElementById('card-errors');
-        displayError.textContent = event.error ? event.error.message : '';
+function updateCartUI() {
+    const container = document.getElementById('cartItems');
+    const countLabels = document.querySelectorAll('.cart-count');
+    const subtotalLabel = document.getElementById('cartSubtotal');
+    
+    // Update all BAG (0) indicators in the top nav
+    countLabels.forEach(label => {
+        label.innerText = cart.length;
+        // Add a little pop animation when number changes
+        label.classList.add('cart-bounce');
+        setTimeout(() => label.classList.remove('cart-bounce'), 400);
     });
 
-    function loadCheckout() {
-        const cart = JSON.parse(localStorage.getItem('obskuraCart')) || [];
-        const container = document.getElementById('checkoutItems');
-        if (cart.length === 0) { window.location.href = 'shop.html'; return; }
+    localStorage.setItem('obskuraCart', JSON.stringify(cart));
 
-        container.innerHTML = cart.map(item => `
-            <div class="summary-item">
-                <img src="${item.image.replace('../', '')}" alt="${item.name}">
-                <div style="flex-grow:1;">
-                    <h4 style="font-size:0.75rem; text-transform:uppercase; margin:0; letter-spacing:1px;">${item.name}</h4>
-                    <p style="font-size:0.65rem; color:#555; margin-top:5px;">QTY: 1</p>
-                </div>
-                <span style="font-weight:600; font-size:0.9rem;">$${item.price}</span>
-            </div>
-        `).join('');
+    if (!container) return;
 
-        const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
-        document.getElementById('subTotal').innerText = `$${total.toFixed(2)}`;
-        document.getElementById('grandTotal').innerText = `$${total.toFixed(2)}`;
+    if (cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center; opacity:0.3; margin-top:80px; font-size:0.7rem; letter-spacing:2px;">YOUR BAG IS EMPTY</p>';
+        if (subtotalLabel) subtotalLabel.innerText = '$0.00';
+        return;
     }
 
-    const formBtn = document.getElementById('submit-button');
-    formBtn.addEventListener('click', async () => {
-        formBtn.disabled = true;
-        formBtn.innerText = "PROCESSING...";
+    // Build the cart items HTML
+    container.innerHTML = cart.map((item, index) => {
+        // Fix image path: if the item image saved as "images/..." 
+        // and we are in /products/, we need to add "../"
+        const imgSrc = (isProductPage && !item.image.startsWith('../')) ? `../${item.image}` : item.image;
         
-        const {token, error} = await stripe.createToken(card);
+        return `
+        <div style="display:flex; gap:15px; margin-bottom:20px; align-items:center; border-bottom:1px solid #27272a; padding-bottom:15px;">
+            <img src="${imgSrc}" style="width:60px; height:75px; object-fit:cover; background:#111;">
+            <div style="flex-grow:1;">
+                <h4 style="font-size:0.65rem; text-transform:uppercase; margin:0; letter-spacing:1px;">${item.name}</h4>
+                <p style="color:#8f5aff; font-size:0.8rem; font-weight:600; margin:5px 0 0 0;">$${item.price}</p>
+            </div>
+            <span style="cursor:pointer; opacity:0.5; font-size:0.8rem;" onclick="removeFromCart(${index})">✕</span>
+        </div>
+        `;
+    }).join('');
 
-        if (error) {
-            document.getElementById('card-errors').textContent = error.message;
-            formBtn.disabled = false;
-            formBtn.innerText = "PAY SECURELY";
-        } else {
-            // Simulation of a successful payment
-            console.log('Stripe Token:', token);
-            alert("Payment Authorized. Thank you for shopping with OBSKURA.");
-            localStorage.removeItem('obskuraCart');
-            window.location.href = 'index.html';
-        }
+    const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+    if (subtotalLabel) subtotalLabel.innerText = `$${total.toFixed(2)}`;
+    
+    // Checkout Button Redirection
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if (checkoutBtn) {
+        checkoutBtn.onclick = () => window.location.href = checkoutPath;
+    }
+}
+
+// 2. SMART ADD TO BAG: Scrapes info from the product page automatically
+function addToBag() {
+    const productName = document.querySelector('h1')?.innerText || "Unknown Product";
+    const productPrice = document.querySelector('.price')?.innerText.replace('$', '') || "0.00";
+    
+    // Grabs the front image source
+    let productImg = document.getElementById('img-front')?.getAttribute('src') || "";
+    
+    // Clean the image path for storage (remove ../ if present so it stores as "images/...")
+    if (productImg.startsWith('../')) {
+        productImg = productImg.replace('../', '');
+    }
+
+    cart.push({ 
+        name: productName, 
+        price: productPrice, 
+        image: productImg 
     });
 
-    window.onload = loadCheckout;
-</script>
-    <div class="cart-trigger" onclick="toggleCart()">
-    <span class="cart-count">0</span>
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-</div>
+    updateCartUI();
+    toggleCart(true); // Open sidebar automatically
+}
 
-<div class="cart-overlay" onclick="toggleCart()"></div>
-<div class="cart-sidebar" id="cartSidebar">
-    <div style="padding: 30px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #222;">
-        <h2 style="font-size:0.8rem; letter-spacing:3px;">YOUR BAG</h2>
-        <span onclick="toggleCart()" style="cursor:pointer;">CLOSE ✕</span>
-    </div>
-    <div id="cartItems" style="padding: 30px; flex-grow:1; overflow-y:auto;"></div>
-    <div style="padding: 30px; border-top:1px solid #222;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:20px; font-weight:600;">
-            <span>TOTAL</span>
-            <span id="cartSubtotal">$0.00</span>
-        </div>
-        <button onclick="location.href='checkout.html'" style="width:100%; padding:15px; background:#8f5aff; color:white; border:none; font-weight:bold; cursor:pointer;">PROCEED TO CHECKOUT</button>
-    </div>
-</div>
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+}
 
-<script src="app.js"></script>
-</body>
-</html>
+// 3. SIDEBAR TOGGLE
+function toggleCart(forceOpen = false) {
+    const sidebar = document.getElementById('cartSidebar');
+    const overlay = document.querySelector('.cart-overlay');
+    
+    if (!sidebar || !overlay) return;
+
+    if (forceOpen === true) {
+        sidebar.classList.add('open');
+        overlay.classList.add('open');
+    } else {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('open');
+    }
+}
+
+// Auto-run on every page load
+window.addEventListener('DOMContentLoaded', updateCartUI);
