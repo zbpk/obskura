@@ -1,114 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OBSKURA — Shop</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Shop-specific styles only */
-    .badge { position: absolute; top: 10px; left: 10px; background: #8f5aff; color: white; font-size: 0.6rem; padding: 4px 10px; font-weight: 800; text-transform: uppercase; }
-    .product { position: relative; }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OBSKURA — Shop</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Modern Shop Enhancements */
+        :root {
+            --accent-glow: rgba(143, 90, 255, 0.2);
+            --card-bg: #111111;
+        }
+
+        body { overflow-x: hidden; }
+
+        /* Badge Styling */
+        .badge { 
+            position: absolute; top: 15px; left: 15px; 
+            background: #8f5aff; color: white; 
+            font-size: 0.55rem; padding: 5px 12px; 
+            font-weight: 800; text-transform: uppercase; 
+            letter-spacing: 1px; border-radius: 2px;
+            z-index: 10;
+        }
+
+        /* Hero Section */
+        .shop-hero {
+            padding: 120px 5% 60px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        /* Tab Navigation */
+        .shop-tabs-wrapper {
+            background: #0a0a0a;
+            border-top: 1px solid #222;
+            border-bottom: 1px solid #222;
+            padding: 10px 0;
+            position: sticky;
+            top: 70px;
+            z-index: 90;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: #555;
+            padding: 10px 25px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active { color: #8f5aff; }
+        .tab-btn:hover { color: #fff; }
+
+        /* Product Grid Enhancements */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px 5%;
+        }
+
+        .product {
+            background: var(--card-bg);
+            border: 1px solid #1a1a1a;
+            padding: 20px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product:hover {
+            border-color: #8f5aff;
+            box-shadow: 0 10px 30px var(--accent-glow);
+            transform: translateY(-10px);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            filter: grayscale(20%);
+            transition: 0.4s;
+        }
+
+        .product:hover img { filter: grayscale(0%); }
+
+        .product h3 {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: #eee;
+        }
+
+        .product .price {
+            font-weight: 800;
+            color: #8f5aff;
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .products { grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px 3%; }
+            .shop-hero h1 { font-size: 2rem; }
+        }
+    </style>
 </head>
 
 <body>
 
 <header class="site-header">
-  <div class="header-left">
-    <div class="logo">OBSKURA</div>
-  </div>
-
-  <div class="header-right">
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="shop.html" class="active">Shop</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="#" onclick="toggleCart(); return false;" class="nav-cart">
-        BAG (<span class="cart-count">0</span>)
-      </a>
-    </nav>
-
-    <div class="hamburger">
-      <span></span><span></span><span></span>
+    <div class="header-left"><div class="logo">OBSKURA</div></div>
+    <div class="header-right">
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" onclick="toggleCart(); return false;" class="nav-cart">BAG (<span class="cart-count">0</span>)</a>
+        </nav>
     </div>
-  </div>
 </header>
 
-<section class="page" style="text-align:center; padding-top: 100px;">
-  <h1 style="color:#8f5aff; text-transform:uppercase; letter-spacing:6px;">Shop</h1>
-  <p style="opacity:0.75;">Premium compression wear engineered for performance and identity.</p>
-
-  <div class="shop-tabs-wrapper">
-    <button class="tab-arrow left">&#10094;</button>
-    <div class="shop-tabs">
-      <button class="tab-btn active" data-target="tshirts">T‑Shirts</button>
-      <button class="tab-btn" data-target="longsleeves">Long Sleeves</button>
-      <button class="tab-btn" data-target="shorts">Shorts</button>
-      <button class="tab-btn" data-target="equipment">Gym Equipment</button>
-      <button class="tab-btn" data-target="underwear">Underwear</button>
-      <button class="tab-btn" data-target="hoodies">Hoodies</button>
-      <button class="tab-btn" data-target="zipups">Zip‑Ups</button>
-      <button class="tab-btn" data-target="accessories">Accessories</button>
-    </div>
-    <button class="tab-arrow right">&#10095;</button>
-  </div>
+<section class="shop-hero">
+    <h1 style="color:#8f5aff; text-transform:uppercase; letter-spacing:8px; font-size: 3rem; margin-bottom: 15px;">Collections</h1>
+    <p style="opacity:0.6; max-width: 600px; margin: 0 auto; line-height: 1.8;">High-performance gear designed for the modern athlete. Engineered for comfort, built for intensity.</p>
 </section>
+
+<div class="shop-tabs-wrapper">
+    <div class="shop-tabs" style="display: flex; justify-content: center; overflow-x: auto; white-space: nowrap;">
+        <button class="tab-btn active" data-target="tshirts">T‑Shirts</button>
+        <button class="tab-btn" data-target="longsleeves">Long Sleeves</button>
+        <button class="tab-btn" data-target="shorts">Shorts</button>
+        <button class="tab-btn" data-target="hoodies">Hoodies</button>
+    </div>
+</div>
 
 <section class="shop-section" id="tshirts">
-  <h2 class="shop-title">T‑SHIRTS</h2>
-  <div class="products">
-    <a class="product" href="products/black-shirt.html">
-      <div class="badge">Best Seller</div>
-      <img src="images/Black Shirt Front.png" alt="Black Shirt" />
-      <h3>Black Shirt</h3>
-      <p class="price">$26.99</p>
-    </a>
+    <div class="products">
+        <a class="product" href="products/purple-shirt.html">
+            <div class="badge">Signature</div>
+            <img src="images/Purple Shirt Front.png" alt="Purple Shirt" />
+            <h3>Purple Performance Tee</h3>
+            <p class="price">$26.99</p>
+        </a>
 
-    <a class="product" href="products/purple-shirt.html">
-      <div class="badge">Signature</div>
-      <img src="images/Purple Shirt Front.png" alt="Purple Shirt" />
-      <h3>Purple Shirt</h3>
-      <p class="price">$26.99</p>
-    </a>
+        <a class="product" href="products/white-shirt.html">
+            <div class="badge">New</div>
+            <img src="images/White Shirt Front.png" alt="White Shirt" />
+            <h3>White Essential Tee</h3>
+            <p class="price">$26.99</p>
+        </a>
 
-    <a class="product" href="products/white-shirt.html">
-      <div class="badge">New</div>
-      <img src="images/White Shirt Front.png" alt="White Shirt" />
-      <h3>White Shirt</h3>
-      <p class="price">$26.99</p>
-    </a>
-
-    <a class="product" href="products/beige-shirt.html"><img src="images/Beige Shirt Front.png" alt="Beige Shirt" /><h3>Beige Shirt</h3><p class="price">$26.99</p></a>
-    <a class="product" href="products/brown-shirt.html"><img src="images/Brown Shirt Front.png" alt="Brown Shirt" /><h3>Brown Shirt</h3><p class="price">$26.99</p></a>
-    <a class="product" href="products/dark-blue-shirt.html"><img src="images/Dark Blue Shirt Front.png" alt="Dark Blue" /><h3>Dark Blue Shirt</h3><p class="price">$26.99</p></a>
-    <a class="product" href="products/dark-green-shirt.html"><img src="images/Dark Green Shirt Front.png" alt="Dark Green" /><h3>Dark Green Shirt</h3><p class="price">$26.99</p></a>
-    <a class="product" href="products/dark-grey-shirt.html"><img src="images/Dark Grey Shirt Front.png" alt="Dark Grey" /><h3>Dark Grey Shirt</h3><p class="price">$26.99</p></a>
-    <a class="product" href="products/light-blue-shirt.html"><img src="images/Light Blue Shirt Front.png" alt="Light Blue" /><h3>Light Blue Shirt</h3><p class="price">$26.99</p></a>
-    <a class="product" href="products/light-green-shirt.html"><img src="images/Light Green Shirt Front.png" alt="Light Green" /><h3>Light Green Shirt</h3><p class="price">$26.99</p></a>
-    <a class="product" href="products/light-grey-shirt.html"><img src="images/Light Grey Shirt Front.png" alt="Light Grey" /><h3>Light Grey Shirt</h3><p class="price">$26.99</p></a>
-    <a class="product" href="products/orange-shirt.html"><img src="images/Orange Shirt Front.png" alt="Orange Shirt" /><h3>Orange Shirt</h3><p class="price">$26.99</p></a>
-    <a class="product" href="products/red-shirt.html"><img src="images/Red Shirt Front.png" alt="Red Shirt" /><h3>Red Shirt</h3><p class="price">$26.99</p></a>
-  </div>
+        <a class="product" href="products/dark-blue-shirt.html"><img src="images/Dark Blue Shirt Front.png" alt="Dark Blue" /><h3>Dark Blue Tee</h3><p class="price">$26.99</p></a>
+        <a class="product" href="products/dark-green-shirt.html"><img src="images/Dark Green Shirt Front.png" alt="Dark Green" /><h3>Dark Green Tee</h3><p class="price">$26.99</p></a>
+        <a class="product" href="products/dark-grey-shirt.html"><img src="images/Dark Grey Shirt Front.png" alt="Dark Grey" /><h3>Dark Grey Tee</h3><p class="price">$26.99</p></a>
+        <a class="product" href="products/orange-shirt.html"><img src="images/Orange Shirt Front.png" alt="Orange Shirt" /><h3>Orange Performance</h3><p class="price">$26.99</p></a>
+        <a class="product" href="products/red-shirt.html"><img src="images/Red Shirt Front.png" alt="Red Shirt" /><h3>Crimson Tee</h3><p class="price">$26.99</p></a>
+        <a class="product" href="products/brown-shirt.html"><img src="images/Brown Shirt Front.png" alt="Brown Shirt" /><h3>Brown Earth Tee</h3><p class="price">$26.99</p></a>
+    </div>
 </section>
 
-<section class="shop-section" id="longsleeves" style="display:none;"><h2 class="shop-title">LONG SLEEVES</h2><div class="products"></div></section>
-<section class="shop-section" id="shorts" style="display:none;"><h2 class="shop-title">SHORTS</h2><div class="products"></div></section>
-<section class="shop-section" id="equipment" style="display:none;"><h2 class="shop-title">GYM EQUIPMENT</h2><div class="products"></div></section>
-<section class="shop-section" id="underwear" style="display:none;"><h2 class="shop-title">UNDERWEAR</h2><div class="products"></div></section>
-<section class="shop-section" id="hoodies" style="display:none;"><h2 class="shop-title">HOODIES</h2><div class="products"></div></section>
-<section class="shop-section" id="zipups" style="display:none;"><h2 class="shop-title">ZIP‑UPS</h2><div class="products"></div></section>
-<section class="shop-section" id="accessories" style="display:none;"><h2 class="shop-title">ACCESSORIES</h2><div class="products"></div></section>
-
-<div class="cart-trigger" onclick="toggleCart()">
-    <span class="cart-count">0</span>
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <path d="M16 10a4 4 0 0 1-8 0"></path>
-    </svg>
-</div>
+<section class="shop-section" id="longsleeves" style="display:none; padding: 100px 0; text-align: center; opacity: 0.5;"><h2>COMING SOON</h2></section>
+<section class="shop-section" id="shorts" style="display:none; padding: 100px 0; text-align: center; opacity: 0.5;"><h2>COMING SOON</h2></section>
+<section class="shop-section" id="hoodies" style="display:none; padding: 100px 0; text-align: center; opacity: 0.5;"><h2>COMING SOON</h2></section>
 
 <div class="cart-overlay" onclick="toggleCart()"></div>
 <div class="cart-sidebar" id="cartSidebar">
@@ -122,42 +183,27 @@
             <span>TOTAL</span>
             <span id="cartSubtotal">$0.00</span>
         </div>
-        <button id="checkoutBtn" class="btn" style="width:100%;">PROCEED TO CHECKOUT</button>
+        <button onclick="location.href='https://zbpk.github.io/obskura/checkout.html'" class="btn" style="width:100%; padding: 20px; background: #8f5aff; color: #000; font-weight: 800; border: none; cursor: pointer; letter-spacing: 2px;">PROCEED TO CHECKOUT</button>
     </div>
 </div>
 
 <script src="app.js"></script>
 <script>
-  // Tab Switching Logic
-  const buttons = document.querySelectorAll('.tab-btn');
-  const sections = document.querySelectorAll('.shop-section');
-  
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      sections.forEach(sec => sec.style.display = 'none');
-      const target = btn.getAttribute('data-target');
-      if(document.getElementById(target)) document.getElementById(target).style.display = 'block';
+    // Improved Tab Switching
+    const buttons = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('.shop-section');
+    
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            sections.forEach(sec => sec.style.display = 'none');
+            const target = btn.getAttribute('data-target');
+            if(document.getElementById(target)) {
+                document.getElementById(target).style.display = 'block';
+            }
+        });
     });
-  });
-
-  // Hamburger Menu Logic
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open');
-  });
-
-  // Smooth Tab Scrolling
-  const tabContainer = document.querySelector('.shop-tabs');
-  document.querySelector('.tab-arrow.left').addEventListener('click', () => {
-    tabContainer.scrollBy({ left: -200, behavior: 'smooth' });
-  });
-  document.querySelector('.tab-arrow.right').addEventListener('click', () => {
-    tabContainer.scrollBy({ left: 200, behavior: 'smooth' });
-  });
 </script>
 
 </body>
