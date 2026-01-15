@@ -1,90 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OBSKURA | Train in the Shadows</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-    <style>
-        :root { --accent: #8f5aff; --bg: #000; }
-        body { background: var(--bg); color: #fff; margin: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
-
-        /* Navigation */
-        .site-header {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
-            box-sizing: border-box; border-bottom: 1px solid #111;
-        }
-
-        /* Mega Hero Section */
-        .hero {
-            position: relative; height: 100vh; width: 100%;
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden; background: #000;
-        }
-        .hero-backdrop { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-        .hero-backdrop iframe { width: 100%; height: 100%; border: none; opacity: 0.6; pointer-events: none; }
-        .overlay-fade {
-            position: absolute; bottom: 0; left: 0; width: 100%; height: 50%;
-            background: linear-gradient(to top, #000, transparent); z-index: 2;
-        }
-        .hero-title-container { position: relative; z-index: 3; text-align: center; }
-        .mega-logo {
-            font-family: 'Montserrat', sans-serif; font-size: clamp(3.5rem, 15vw, 11rem);
-            font-weight: 900; letter-spacing: 15px; margin: 0; line-height: 1;
-            text-shadow: 0 0 30px rgba(143, 90, 255, 0.4);
-        }
-
-        /* Product Grid Fix */
-        .section-padding { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
-        .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
-        
-        .product-card { 
-            text-decoration: none; color: inherit; background: #0d0d0d; 
-            border: 1px solid #111; transition: 0.3s; padding-bottom: 20px;
-            display: block;
-        }
-        .product-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        
-        /* Image sizing fix */
-        .product-card img { 
-            width: 100%; 
-            height: 350px; 
-            object-fit: contain; 
-            display: block;
-            background: #111; /* Shows a dark box if image is missing */
-        }
-        
-        .card-info { padding: 15px; text-align: center; }
-        .card-info h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #888; margin: 0; }
-        .card-info .price { font-weight: 800; color: var(--accent); margin-top: 10px; font-size: 1rem; }
-
-        /* Form Styling */
-        .contact-form { max-width: 600px; display: grid; gap: 15px; margin-top: 30px; }
-        input, textarea { background: #0a0a0a; border: 1px solid #222; padding: 15px; color: #fff; width: 100%; box-sizing: border-box; font-family: inherit; }
-        .btn-white { background: #fff; color: #000; padding: 15px 40px; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.3s; }
-        .btn-white:hover { background: var(--accent); color: #fff; }
-
-        @media (max-width: 1024px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { .mega-logo { letter-spacing: 5px; } }
-    </style>
-</head>
-<body>
-
-<header class="site-header">
-    <div style="font-weight:900; letter-spacing:4px; font-size: 1.2rem;">OBSKURA</div>
-    <nav>
-        <a href="#shop" style="color:#fff; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">SHOP</a>
-        <a href="#about" style="color:#fff; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">ABOUT</a>
-        <a href="#contact" style="color:#fff; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">CONTACT</a>
-    </nav>
-</header>
-
 <section class="hero">
     <div class="hero-backdrop">
-        <iframe src="backdrop-1.html"></iframe>
+        <div class="backdrop-image"></div>
         <div class="overlay-fade"></div>
     </div>
     <div class="hero-title-container">
@@ -94,44 +10,35 @@
     </div>
 </section>
 
-<div id="shop" class="section-padding">
-    <h2 style="font-family:'Montserrat'; letter-spacing: 2px; margin-bottom: 40px; font-size: 1.2rem;">THE COLLECTION</h2>
-    <div class="grid-container">
-        <a href="products/black-shirt.html" class="product-card">
-            <img src="images/Black Shirt Front.png" alt="Black Performance Tee">
-            <div class="card-info"><h3>Black Performance Tee</h3><div class="price">$26.99</div></div>
-        </a>
-        <a href="products/white-shirt.html" class="product-card">
-            <img src="images/White Shirt Front.png" alt="White Essential Tee">
-            <div class="card-info"><h3>White Essential Tee</h3><div class="price">$26.99</div></div>
-        </a>
-        <a href="products/purple-shirt.html" class="product-card">
-            <img src="images/Purple Shirt Front.png" alt="Purple Signature Tee">
-            <div class="card-info"><h3>Purple Signature Tee</h3><div class="price">$26.99</div></div>
-        </a>
-        <a href="products/dark-grey-shirt.html" class="product-card">
-            <img src="images/Dark Grey Shirt Front.png" alt="Slate Grey Tee">
-            <div class="card-info"><h3>Slate Grey Tee</h3><div class="price">$26.99</div></div>
-        </a>
-    </div>
-</div>
+<style>
+    /* New Backdrop Styles */
+    .hero-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: #000;
+    }
 
-<section id="about" class="section-padding" style="background: #050505;">
-    <h2 style="font-family:'Montserrat'; font-size: clamp(2rem, 5vw, 3rem);">BUILT FOR THE <span style="color:var(--accent)">UNSEEN</span></h2>
-    <p style="max-width: 600px; opacity: 0.6; line-height: 1.8; font-size: 1.1rem;">We move in silence. Our results speak. This is the uniform of the obsessed.</p>
-</section>
+    .backdrop-image {
+        width: 100%;
+        height: 100%;
+        background-image: url('images/backdrop-1.png'); /* Linked to your folder */
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5; /* Makes the image dark so the white text pops */
+        filter: grayscale(100%); /* Keeps it matching the minimalist theme */
+    }
 
-<section id="contact" class="section-padding">
-    <h2 style="font-family:'Montserrat'; font-size: 1.5rem; margin-bottom: 20px;">SUPPORT</h2>
-    <p style="opacity:0.5; font-size: 0.9rem;">Expect a response within 24 hours.</p>
-    <form class="contact-form">
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="Email">
-        <textarea rows="5" placeholder="Message"></textarea>
-        <button type="submit" class="btn-white">Send Message</button>
-    </form>
-</section>
-
-<script src="app.js"></script>
-</body>
-</html>
+    .overlay-fade {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%; /* Smooth fade into the shop section */
+        background: linear-gradient(to top, #000 10%, transparent 100%);
+        z-index: 2;
+    }
+</style>
