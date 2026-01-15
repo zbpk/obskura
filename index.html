@@ -11,12 +11,12 @@
             --gym-black: #000000;
             --gym-white: #ffffff;
             --accent: #8f5aff;
-            --gym-gray: #111111;
+            --field-bg: #0d0d0d;
         }
 
         body { background: var(--gym-black); color: var(--gym-white); margin: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 
-        /* Sticky Nav */
+        /* Navigation */
         .site-header {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
@@ -24,7 +24,7 @@
             border-bottom: 1px solid #222; box-sizing: border-box;
         }
 
-        /* Hero */
+        /* High Impact Hero */
         .hero {
             height: 90vh; display: flex; align-items: flex-end; justify-content: flex-start;
             padding: 0 5% 100px; background: linear-gradient(to top, #000, transparent), url('images/hero-bg.jpg');
@@ -32,42 +32,32 @@
         }
         .hero-content h1 { font-family: 'Montserrat', sans-serif; font-size: 6vw; line-height: 0.9; margin: 0 0 20px; text-transform: uppercase; }
 
-        /* Shop Section */
-        .shop-nav {
-            position: sticky; top: 70px; background: var(--gym-black);
-            padding: 20px 5%; display: flex; gap: 30px; z-index: 900;
-            border-bottom: 1px solid #111;
-        }
-        .shop-nav a {
-            text-decoration: none; color: #666; font-weight: 800;
-            font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s;
-        }
-        .shop-nav a:hover, .shop-nav a.active { color: var(--gym-white); }
+        /* Section Headings */
+        .section-title { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; letter-spacing: -1px; margin-bottom: 40px; }
 
+        /* Product Grid */
         .grid-container {
             display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 20px; padding: 40px 5%; max-width: 1600px; margin: 0 auto;
+            gap: 20px; padding: 80px 5%; max-width: 1600px; margin: 0 auto;
         }
-
-        .product-card {
-            text-decoration: none; color: inherit; background: #0d0d0d; border: 1px solid #111;
-            transition: 0.3s;
-        }
+        .product-card { text-decoration: none; color: inherit; background: #0d0d0d; border: 1px solid #111; transition: 0.3s; text-align: center;}
         .product-card:hover { transform: translateY(-5px); border-color: var(--accent); }
         .product-card img { width: 100%; height: auto; display: block; }
-        .card-info { padding: 20px; text-align: center; }
-        .card-info h3 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 5px; color: #bbb; }
-        .card-info .price { font-weight: 800; color: var(--accent); }
+        .card-info { padding: 20px; }
+        .card-info h3 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; color: #bbb; }
+        .card-info .price { font-weight: 800; color: var(--accent); margin-top: 10px; font-size: 1rem; }
 
-        /* About Section */
-        .philosophy-section { padding: 120px 10%; background: #050505; border-top: 1px solid #111; }
-        .philosophy-content { max-width: 1000px; margin: 0 auto; }
-        .philosophy-content h2 { font-family: 'Montserrat', sans-serif; font-size: 3.5rem; letter-spacing: -2px; margin-bottom: 40px; line-height: 1; }
-        
-        @media (max-width: 1024px) {
-            .grid-container { grid-template-columns: repeat(2, 1fr); }
-            .philosophy-content h2 { font-size: 2.5rem; }
+        /* Combined Contact Form */
+        .contact-section { padding: 120px 10%; background: #080808; border-top: 1px solid #111; }
+        .contact-form { max-width: 600px; margin: 40px 0; display: grid; gap: 15px; }
+        .contact-form input, .contact-form textarea {
+            background: var(--field-bg); border: 1px solid #222; padding: 18px; color: white;
+            font-family: 'Inter', sans-serif; width: 100%; box-sizing: border-box;
         }
+        .contact-form input:focus { outline: none; border-color: var(--accent); }
+        .btn-submit { background: var(--gym-white); color: black; padding: 18px; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; }
+
+        @media (max-width: 1024px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
@@ -78,56 +68,47 @@
         <a href="#home" style="color:white; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">HOME</a>
         <a href="#shop" style="color:white; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">SHOP</a>
         <a href="#about" style="color:white; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">ABOUT</a>
-        <a href="contact.html" style="color:white; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">CONTACT</a>
+        <a href="#contact" style="color:white; text-decoration:none; margin-left:20px; font-size:0.7rem; font-weight:700;">CONTACT</a>
     </nav>
 </header>
 
 <section id="home" class="hero">
     <div class="hero-content">
         <h1>UNSEEN<br>UNSTOPPABLE</h1>
-        <a href="#shop" class="btn" style="background:white; color:black; padding: 18px 45px; font-weight:800; text-decoration:none; display:inline-block; letter-spacing:2px;">SHOP NOW</a>
+        <a href="#shop" style="background:white; color:black; padding: 18px 45px; font-weight:800; text-decoration:none; display:inline-block; letter-spacing:2px;">SHOP THE COLLECTION</a>
     </div>
 </section>
 
-<div id="shop" class="shop-nav">
-    <a href="#shop" class="active">ALL PRODUCTS</a>
-    <a href="#about">OUR STORY</a>
-</div>
-
-<div class="grid-container">
+<div id="shop" class="grid-container">
     <a href="products/black-shirt.html" class="product-card"><img src="images/Black Shirt Front.png"><div class="card-info"><h3>Black Performance Tee</h3><div class="price">$26.99</div></div></a>
     <a href="products/white-shirt.html" class="product-card"><img src="images/White Shirt Front.png"><div class="card-info"><h3>White Essential Tee</h3><div class="price">$26.99</div></div></a>
-    <a href="products/purple-shirt.html" class="product-card"><img src="images/Purple Signature Tee.png"><div class="card-info"><h3>Purple Signature Tee</h3><div class="price">$26.99</div></div></a>
+    <a href="products/purple-shirt.html" class="product-card"><img src="images/Purple Shirt Front.png"><div class="card-info"><h3>Purple Signature Tee</h3><div class="price">$26.99</div></div></a>
     <a href="products/dark-grey-shirt.html" class="product-card"><img src="images/Dark Grey Shirt Front.png"><div class="card-info"><h3>Slate Grey Tee</h3><div class="price">$26.99</div></div></a>
     
     <a href="products/beige-shirt.html" class="product-card"><img src="images/Beige Shirt Front.png"><div class="card-info"><h3>Beige Sand Tee</h3><div class="price">$26.99</div></div></a>
     <a href="products/brown-shirt.html" class="product-card"><img src="images/Brown Shirt Front.png"><div class="card-info"><h3>Earth Brown Tee</h3><div class="price">$26.99</div></div></a>
     <a href="products/dark-blue-shirt.html" class="product-card"><img src="images/Dark Blue Shirt Front.png"><div class="card-info"><h3>Deep Blue Tee</h3><div class="price">$26.99</div></div></a>
     <a href="products/dark-green-shirt.html" class="product-card"><img src="images/Dark Green Shirt Front.png"><div class="card-info"><h3>Forest Green Tee</h3><div class="price">$26.99</div></div></a>
-
-    <a href="products/light-blue-shirt.html" class="product-card"><img src="images/Light Blue Shirt Front.png"><div class="card-info"><h3>Sky Blue Tee</h3><div class="price">$26.99</div></div></a>
-    <a href="products/light-green-shirt.html" class="product-card"><img src="images/Light Green Shirt Front.png"><div class="card-info"><h3>Mint Green Tee</h3><div class="price">$26.99</div></div></a>
-    <a href="products/light-grey-shirt.html" class="product-card"><img src="images/Light Grey Shirt Front.png"><div class="card-info"><h3>Light Grey Tee</h3><div class="price">$26.99</div></div></a>
-    <a href="products/orange-shirt.html" class="product-card"><img src="images/Orange Shirt Front.png"><div class="card-info"><h3>Burst Orange Tee</h3><div class="price">$26.99</div></div></a>
 </div>
 
-<section id="about" class="philosophy-section">
-    <div class="philosophy-content">
-        <h2>BUILT FOR THE <span style="color: var(--accent);">UNSEEN.</span></h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; text-align: left; align-items: start;">
-            <p style="font-size: 1.1rem; line-height: 1.8; color: #888;">
-                This isn't for the ones chasing likes or looking for a spotlight. OBSKURA was born in the late-night hours, in empty garages, and silent basements. Our gear is engineered for the obsession that happens when no one is watching.
-            </p>
-            <div style="border-left: 2px solid var(--accent); padding-left: 40px;">
-                <h3 style="font-size: 0.7rem; letter-spacing: 3px; color: #fff; text-transform: uppercase; margin-bottom: 20px;">The Philosophy</h3>
-                <ul style="list-style: none; padding: 0; color: #fff; font-weight: 700; line-height: 2.5; letter-spacing: 1px; font-size: 0.8rem;">
-                    <li>— MOVE IN SILENCE</li>
-                    <li>— EVOLVE IN THE SHADOWS</li>
-                    <li>— NO APPLAUSE REQUIRED</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<section id="about" style="padding: 120px 10%; background: #050505;">
+    <h2 class="section-title">BUILT FOR THE <span style="color: var(--accent);">UNSEEN.</span></h2>
+    <p style="max-width: 800px; color: #888; line-height: 1.8; font-size: 1.1rem;">
+        OBSKURA was born in the late-night hours, in empty garages, and silent basements. 
+        Our gear is engineered for the obsession that happens when no one is watching. 
+        Minimalist design. Ruthless performance.
+    </p>
+</section>
+
+<section id="contact" class="contact-section">
+    <h2 class="section-title">CONTACT SUPPORT</h2>
+    <p style="color: #666; font-size: 0.9rem;">Expect a response within 24 hours.</p>
+    <form class="contact-form">
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email Address">
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button type="submit" class="btn-submit">Send Message</button>
+    </form>
 </section>
 
 <script src="app.js"></script>
