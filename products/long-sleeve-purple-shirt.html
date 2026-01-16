@@ -5,28 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OBSKURA | Purple Long Sleeve</title>
     <link rel="stylesheet" href="../style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
+        /* --- BRAND PRESETS --- */
         :root {
-            --bg-black: #0a0a0a;
-            --surface-dark: #141414;
-            --accent-purple: #8b5cf6;
-            --accent-purple-hover: #7c3aed;
-            --text-gray: #a1a1aa;
-            --text-light: #f4f4f5;
-            --border-color: #27272a;
-            --header-height: 70px;
+            --gym-black: #000000;
+            --gym-white: #ffffff;
+            --accent: #8f5aff; 
+            --surface: #0d0d0d;
+            --border: #1a1a1a;
+            --text-muted: #888888;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        body { 
+            background-color: var(--gym-black); 
+            color: var(--gym-white); 
+            margin: 0; 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        .site-header {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; height: 80px;
+            background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 900; font-size: 1.2rem; 
+            letter-spacing: 4px; text-transform: uppercase; 
+        }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { 
+            color: var(--gym-white); text-decoration: none; 
+            font-size: 0.7rem; font-weight: 700; 
+            letter-spacing: 2px; text-transform: uppercase; 
+        }
+
+        /* --- PRODUCT LAYOUT --- */
         .main-container {
-            max-width: 1200px; margin: 60px auto 100px;
+            max-width: 1200px; margin: 160px auto 100px; 
             padding: 0 20px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px;
         }
 
         .image-container {
-            position: relative; background: var(--surface-dark); border-radius: 2px;
-            overflow: hidden; aspect-ratio: 4 / 5;
+            position: relative; background: var(--surface); aspect-ratio: 4 / 5;
+            overflow: hidden; border: 1px solid var(--border);
         }
         .image-container img {
             width: 100%; height: 100%; object-fit: cover; position: absolute;
@@ -36,52 +64,66 @@
         
         .gallery-controls { display: flex; gap: 12px; margin-top: 20px; justify-content: center; }
         .view-btn {
-            background: transparent; border: 1px solid var(--border-color); color: var(--text-light);
+            background: transparent; border: 1px solid var(--border); color: var(--gym-white);
             padding: 12px 24px; cursor: pointer; text-transform: uppercase; font-size: 0.7rem;
             letter-spacing: 2px; transition: var(--transition);
         }
-        .view-btn.active { border-color: var(--accent-purple); background: rgba(139, 92, 246, 0.1); }
+        .view-btn.active { border-color: var(--accent); background: rgba(143, 90, 255, 0.1); }
 
-        .product-info h1 { font-family: 'Montserrat', sans-serif; font-size: 2.8rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: -1px; }
-        .price { font-size: 1.8rem; color: var(--accent-purple); font-weight: 600; margin-bottom: 40px; }
+        /* Typography - OBSKURA Signature Bold */
+        .product-info h1 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 3.5rem; font-weight: 900; 
+            margin-bottom: 5px; text-transform: uppercase; 
+            letter-spacing: -2px; line-height: 0.9;
+        }
+        .price { 
+            font-size: 1.8rem; color: var(--accent); 
+            font-weight: 800; margin-bottom: 40px; letter-spacing: -1px;
+        }
         
         .size-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-        .size-btn { background: var(--surface-dark); border: 1px solid var(--border-color); color: var(--text-light); padding: 15px; cursor: pointer; transition: var(--transition); font-weight: 600; }
-        .size-btn.selected { background: var(--accent-purple); border-color: var(--accent-purple); color: white; }
+        .size-btn { 
+            background: var(--surface); border: 1px solid var(--border); 
+            color: var(--gym-white); padding: 15px; cursor: pointer; 
+            transition: var(--transition); font-weight: 800;
+        }
+        .size-btn.selected { background: var(--gym-white); color: var(--gym-black); }
 
-        .accordion { border-top: 1px solid var(--border-color); margin-top: 50px; }
-        .accordion-item { border-bottom: 1px solid var(--border-color); }
-        .accordion-header { padding: 22px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-gray); font-size: 0.95rem; line-height: 1.6; }
+        .btn-buy {
+            width: 100%; padding: 22px; background: var(--accent); border: none; color: white;
+            font-weight: 900; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; 
+            margin-top: 30px; transition: var(--transition); border-radius: 4px;
+        }
+
+        .accordion { border-top: 1px solid var(--border); margin-top: 50px; }
+        .accordion-item { border-bottom: 1px solid var(--border); }
+        .accordion-header { padding: 22px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-transform: uppercase; font-size: 0.8rem; font-weight: 800; }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
         .accordion-item.active .accordion-content { max-height: 200px; padding-bottom: 25px; }
 
         @media (max-width: 968px) {
-            .main-container { grid-template-columns: 1fr; gap: 40px; margin-top: 20px; }
+            .main-container { grid-template-columns: 1fr; gap: 40px; margin-top: 120px; }
+            .product-info h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
-<body style="background: #000; color: #fff;">
+<body>
 
     <header class="site-header">
-        <div class="header-left"><div class="logo">OBSKURA</div></div>
-        <div class="header-right">
-            <nav class="nav-links">
-                <a href="../index.html">Home</a>
-                <a href="../shop.html">Shop</a>
-                <a href="../about.html">About</a>
-                <a href="../contact.html">Contact</a>
-                <a href="#" onclick="toggleCart(); return false;" class="nav-cart">
-                    BAG (<span class="cart-count">0</span>)
-                </a>
-            </nav>
-        </div>
+        <div class="logo">OBSKURA</div>
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../shop.html">Shop</a>
+            <a href="#" onclick="toggleCart(); return false;">BAG (<span class="cart-count">0</span>)</a>
+        </nav>
     </header>
 
     <main class="main-container">
         <section class="product-gallery">
             <div class="image-container">
-                <img src="../images/Long Sleeve Purple Shirt Front.png" alt="Front View" class="active" id="img-front">
-                <img src="../images/Long Sleeve Purple Shirt Back.png" alt="Back View" id="img-back">
+                <img src="../images/Purple_Shirt_Front.png" alt="Front" class="active" id="img-front">
+                <img src="../images/Purple_Shirt_Back.png" alt="Back" id="img-back">
             </div>
             <div class="gallery-controls">
                 <button class="view-btn active" onclick="switchImage('front')">Front</button>
@@ -90,14 +132,14 @@
         </section>
 
         <section class="product-info">
-            <p style="color: var(--accent-purple); letter-spacing: 3px; font-size: 0.7rem; margin-bottom: 8px; font-weight: 800;">OBSIDIAN DROP</p>
+            <p style="color: var(--accent); letter-spacing: 3px; font-size: 0.7rem; margin-bottom: 8px; font-weight: 800;">OBSIDIAN DROP</p>
             <h1>Purple Long Sleeve</h1>
             <p class="price">$34.99</p>
 
-            <div class="selection-group" style="margin-bottom: 30px;">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-gray);">
-                    <span>Select Size</span> 
-                    <span style="color: var(--accent-purple); cursor: pointer; text-decoration: underline; font-weight: 600;">Size Guide</span>
+            <div class="selection-group">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                    <p style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin: 0;">Select Size</p>
+                    <span style="color: var(--accent); cursor: pointer; font-size: 0.7rem; font-weight: 800; text-transform: uppercase;">Size Guide</span>
                 </div>
                 <div class="size-grid">
                     <button class="size-btn">S</button>
@@ -108,9 +150,7 @@
                 </div>
             </div>
 
-            <button class="btn" style="width: 100%; padding: 22px; border-radius: 4px;" onclick="addToBag()">
-                Add To Bag — $34.99
-            </button>
+            <button class="btn-buy" onclick="addToBag()">Add To Bag — $34.99</button>
 
             <div class="accordion">
                 <div class="accordion-item active">
@@ -125,21 +165,7 @@
         </section>
     </main>
 
-    <div class="cart-overlay" onclick="toggleCart()"></div>
-    <div id="cartSidebar" class="cart-sidebar">
-        <div style="padding: 30px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #222;">
-            <h2 style="font-size:0.8rem; letter-spacing:3px;">YOUR BAG</h2>
-            <span onclick="toggleCart()" style="cursor:pointer;">CLOSE ✕</span>
-        </div>
-        <div id="cartItems" style="padding: 30px; flex-grow:1; overflow-y:auto;"></div>
-        <div style="padding: 30px; border-top:1px solid #222;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
-                <span style="font-size:0.7rem; opacity:0.6;">SUBTOTAL</span>
-                <span id="cartSubtotal" style="font-weight:600;">$0.00</span>
-            </div>
-            <button id="checkoutBtn" class="btn" style="width:100%;">CHECKOUT</button>
-        </div>
-    </div>
+    <div id="cartSidebar" class="cart-sidebar"></div>
 
     <script src="../app.js"></script>
     <script>
@@ -149,9 +175,9 @@
             const btns = document.querySelectorAll('.view-btn');
             btns.forEach(b => b.classList.remove('active'));
             if(view === 'front') {
-                front?.classList.add('active'); back?.classList.remove('active'); btns[0].classList.add('active');
+                front.classList.add('active'); back.classList.remove('active'); btns[0].classList.add('active');
             } else {
-                back?.classList.add('active'); front?.classList.remove('active'); btns[1].classList.add('active');
+                back.classList.add('active'); front.classList.remove('active'); btns[1].classList.add('active');
             }
         }
 
