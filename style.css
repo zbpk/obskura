@@ -27,34 +27,48 @@ body {
     overflow-x: hidden;
 }
 
-/* --- NAVIGATION --- */
+/* --- FIXED NAVIGATION --- */
 .site-header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Pushes Logo left, Nav right */
     align-items: center;
-    padding: 20px 5%;
-    background: rgba(0, 0, 0, 0.9);
+    padding: 25px 5%; /* Increased padding for more breathing room */
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 4px; /* Premium spacing */
+    text-transform: uppercase;
+}
+
+/* Nav Link Container */
+.nav-links {
+    display: flex;
+    gap: 40px; /* Better spacing for just two links */
 }
 
 .nav-link {
     color: var(--gym-white);
     text-decoration: none;
-    margin-left: 25px;
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    transition: color 0.3s;
+    transition: color 0.3s, opacity 0.3s;
 }
 
 .nav-link:hover {
     color: var(--accent);
+    opacity: 0.8;
 }
 
 /* --- SHOP PAGE LAYOUT --- */
@@ -245,6 +259,6 @@ select {
         grid-template-columns: 1fr;
     }
     .filters-sidebar {
-        display: none; /* Hide sidebar on mobile for cleaner look */
+        display: none; 
     }
 }
